@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Jonathan Ipsaro">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Understand .pdb files and make molecular graphics">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://jonipsaro.github.io/post/pymol/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.297ab9073395abeea153c005938a34ba.css">
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://jonipsaro.github.io/post/pymol/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Jonathan Ipsaro">
+  <meta property="og:url" content="https://jonipsaro.github.io/post/pymol/">
+  <meta property="og:title" content="PyMOL Tutorial 2018 | Jonathan Ipsaro">
+  <meta property="og:description" content="Understand .pdb files and make molecular graphics"><meta property="og:image" content="https://jonipsaro.github.io/post/pymol/featured.png">
+  <meta property="twitter:image" content="https://jonipsaro.github.io/post/pymol/featured.png"><meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-11-01T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2019-11-01T00:00:00&#43;00:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>PyMOL Tutorial 2018 | Jonathan Ipsaro</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Jonathan Ipsaro</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-header d-xl-none">
+  <div class="featured-image" style="background-image: url('/post/pymol/featured_hu858170fcd3172850504b497719eb9489_156698_800x0_resize_lanczos_3.png');"></div>
+  <span class="article-header-caption">Handouts and resources for the PyMOL tutorial</span>
+</div>
+
+
+<div class="container-fluid split-header d-none d-xl-block">
+  <div class="row">
+    <div class="col-6">
+      <div class="split-header-content">
+        <h1 itemprop="name">PyMOL Tutorial 2018</h1>
+
+        
+        <p class="page-subtitle">Understand .pdb files and make molecular graphics  💻</p>
+        
+
+        
+
+
+
+<meta content="2019-11-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-11-01 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">Jonathan Ipsaro</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Nov 1, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+
+  
+
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+        
+
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="split-header-image">
+        <img src="/post/pymol/featured_hu858170fcd3172850504b497719eb9489_156698_680x500_fill_q90_lanczos_top_3.png" itemprop="image" alt="">
+        <span class="article-header-caption">Handouts and resources for the PyMOL tutorial</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-container d-xl-none">
+  <h1 itemprop="name">PyMOL Tutorial 2018</h1>
+
+  
+  <p class="page-subtitle">Understand .pdb files and make molecular graphics  💻</p>
+  
+
+  
+
+
+
+<meta content="2019-11-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2019-11-01 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">Jonathan Ipsaro</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Nov 1, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+
+  
+    
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      <h2 id="overview">Overview</h2>
+<p>I have instructed PyMOL tutorials numerous times for first year graduate students (and even occasional faculty members!).  Course materials can be found in the downloads.  An outline of the course contents is also provided.</p>
+<hr>
+<hr>
+<h2 id="tutorial-downloads">Tutorial Downloads</h2>
+<ul>
+<li><a href="PyMOL_Tutorial_2018.docx">Tutorial Documentation - MS Word</a></li>
+<li><a href="PyMOL_Practice.docx">Practice Questions - MS Word</a></li>
+<li><a href="PyMOL_Practice.pse">Practice Question - PyMOL Session (Finished)</a></li>
+<li><a href="PyMOL_Quiz_2018.docx">Quiz - MS Word</a></li>
+</ul>
+<hr>
+<hr>
+<h2 id="workshop-notes">Workshop Notes</h2>
+<h3 id="what-pymol-does-and-does-not-do">What PyMOL does and does not do:</h3>
+<ul>
+  <li>PyMOL is a molecular graphics program that is primarily designed for producing publication-quality illustrations and animations.</li>
+  <li>In its purest form, PyMOL is NOT used for molecular modeling, structure manipulation, or <i>in silico</i> experiments.</li>
+  <li>PyMOL is user-sponsored but runs on an open source platform.</li>
+</ul>
+<h3 id="about-the-pdb-file-format">About the PDB file format</h3>
+<ul>
+  <li>The main file format you will use with PyMOL has the extension .pdb (Protein Data Bank).</li>
+  <li>PDB files are <b>plain text</b> documents and have a straightforward and consistent structure.  The <b>spacing</b> of entries is critical to the file being read properly.</li>
+</ul>
+<table>
+<tr><th>Line Identifier</th><th>Description</th></tr>
+<tr><td>Title</td><td><i>Name of the entry</i></td></tr>
+<tr><td>Remarks</td><td><i>Descriptors for everything used in the project.  This includes biological, chemical, physical, crystallographic, refinement, and processing parameters.</i></td></tr>
+<tr><td>CRYS1 card</td><td><i>Unit cell dimensions for the crystal</i></td></tr>
+<tr><td>Origin and Scale Cards</td><td><i>Sets the coordinate system</i></td></tr>
+<tr><td>ATOM entries</td><td><i>Coordinates (see below)</i></td></tr>
+<tr><td>ANISOU entries</td><td><i>Optional anisotropic temperature factor line</i></td></tr>
+<tr><td>Terminators (TER, END)</td><td><i>Indicates the end of chains or the end of the file</i></td></tr>
+</table>
+<ul>
+  <li>The <b>bare minimum</b> .pdb file has a CRYS1 card and atom entries.</li>
+  <li>Each ATOM entry has several parameters (in order):
+    <ul>
+    <li>atom card</li>
+    <li>atom number</li>
+    <li>atom identity</li>
+    <li>amino acid identity</li>
+    <li>chain identity</li>
+    <li>amino acid number</li>
+    <li>x, y, z, coordinates</li>
+    <li>occupancy (0.00-1.00)</li>
+    <li>temperature factor (B-factor)</li>
+    <li>atomic element</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="the-pymol-interface">The PyMOL Interface</h3>
+<ol>
+  <li>Both GUI and command line driven</li>
+  <li>Has two GUIs (External and Internal):
+    <ul>
+      <li>The <b>external</b> GUI is used for rendering images, creating animations, and controlling many of PyMOL’s settings.</li>
+      <li>The <b>internal</b> GUI is used for controlling exactly what objects and elements are displayed, how they are colored, and how they are positioned.</li>
+      <li><i>Think of PyMOL as a photo shoot.  The internal GUI controls what your model is wearing and how the subject is positioned.  The external GUI controls the settings on your camera.</i></li>
+    </ul>
+  </li>
+</ol>
+<img src="pymol_windows.png" alt="PyMOL screenshot">
+<h3 id="opening-files">Opening Files</h3>
+<ul>
+  <li>Option 1:  Go to <a href="http://www.pdb.org/">www.pdb.org</a> and find the PDB file you would like.  Download the coordinates.  Then use <code>File >> Open</code> to browse and open the file.</li>
+  <li>Option 2:  Use the command line.  Simply type <code>fetch</code> followed by the PDB code.
+  </li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>fetch <span style="color:#ae81ff">3</span>SU3
+</span></span></code></pre></div><h3 id="internal-gui-controls">Internal GUI Controls:</h3>
+<ol>
+  <li>Change molecular orientation (mouse controls)
+    <table>
+      <tr><th>Mouse Button</th><td>Left</td><td>Middle</td><td>Right</td><td>Wheel</td></tr>
+      <tr><td>Drag</td><td>Rotation</td><td>Move</td><td>Zoom</td><td>Slab</td></tr>
+      <tr><td>Click</td><td>Pick Atom</td><td>Center</td><td>Menu</td><td></td></tr>
+    </table>
+  Note: These are also indicated in the lower-right corner of the internal GUI window.
+  </li>
+  <li>Changing the appearance of molecules or selections - There are 5 main buttons next to each element:<br>
+    <table>
+      <tr><td>A</td><td>Actions</td></tr>
+      <tr><td>S</td><td>Show (display the selection in a certain way, i.e. 'cartoon', 'surface', etc.)</td></tr>
+      <tr><td>H</td><td>Hide (hide certain selection features that are currently displayed)</td></tr>
+      <tr><td>L</td><td>Label</td></tr>
+      <tr><td>C</td><td>Color</td></tr>
+    </table>
+  </li>
+  <li>Selecting molecules, chains, atoms, or regions can be accomplished either through the command line or by pointing and clicking.  Here are the three most useful ways I like:
+  <ol type='a'>
+    <li>Click on the residue of interest.  You will see that a (sele) object has been created in the internal GUI.  You can rename this object and PyMOL will remember the selection in the future.  The selection can be edited later as well.</li>
+    <li>Use the external GUI can click <code>Display >> Sequence On</code>.  This will show you the amino acid sequence of the structure.  You can select residues by clicking on them.</li>
+    <li>Use the <code>select</code> command line command.  This command is very powerful, but may take some time to get the hang of.</li>
+  </ol>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#This will select chain A and name it “mychain”</span>
+</span></span><span style="display:flex;"><span>select mychain, chain A
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#This will select all c, o, n, and alpha-carbon atoms and name the selection “certainatoms”</span>
+</span></span><span style="display:flex;"><span>select certainatoms, name c<span style="color:#f92672">+</span>o<span style="color:#f92672">+</span>n<span style="color:#f92672">+</span>ca	
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#This will select everything that is both in a selection named “file1” and annotated as chain B. Note that there is no comma in this command.</span>
+</span></span><span style="display:flex;"><span>select file1 <span style="color:#f92672">and</span> chain B
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#This will select everything that is both in a selection named “file1” and annotated as chain B and then name the selection “file1chainB”</span>
+</span></span><span style="display:flex;"><span>select file1chainB, file1 <span style="color:#f92672">and</span> chain B
+</span></span></code></pre></div><ol start='4'>
+  <li>Distances and angles can be measured using the measurement wizard.  The wizard can be found under <code>Wizard >> Measurement</code>.
+    <ol type='a'>
+      <li>To measure distances, you will simply need to click each atom.  After clicking the second atom, a dashed line and distance (in Angstroms) will appear.</li>
+      <li>To measure angles, you will need to first change the measurement mode from <code>Distances</code> to <code>Angles</code> in the lower right corner of the internal GUI.  Then click on three atoms.  The angle will be displayed.</li>
+    </ol>
+  </li>
+  <li>Other useful display features:
+    <ol type='a'>
+      <li>Electrostatics can be generated using the <code>Action</code> button for an object.  Simply click <code>Action >> generate >> vacuum electrostatics</code>.  Note that these are rather quick-and-dirty (i.e. not publishable) but can give a nice approximation of the electrostatic surface.  For a publishable electrostatic surface, plug-ins are required such as APBS.</li>
+      <li>Symmetry-related molecules can also be generated using the <code>Action</code> button.  This is particularly useful if a molecule adopts a symmetric structure that is coincident with a crystallographic axis.  Click <code>Action >> generate >> symmetry mates</code> and select a distance  (5 Å is usually good enough).  You can then hide the molecules that you are not interested in (or delete them altogether)</li>
+    </ol>
+  </li>
+  <li>Alignment
+    <ol type='a'>
+      <li>One of the most useful features that PyMOL boasts is a native three-dimensional alignment algorithm.</li>
+      <li>Alignment of two objects can be performed simply using the <code>align</code> -or- <code>super</code> command line commands.</li>
+      <li>Note that alignments can be performed between entire structure depositions, specific chains, or even selected residues.  Define your selection (described above), name them, and use the align command to superpose one molecule onto the other.</li>
+    </ol>
+  </li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#This command attempts to move the entire PDB coordinates of PDB1 onto PDB2. This would work well for two homologous structures with one copy in the asymmetric unit</span>
+</span></span><span style="display:flex;"><span>align PDB1, PDB2
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Alternatively, the super command can be used.  The results may be slightly different.</span>
+</span></span><span style="display:flex;"><span>super PDB1, PDB2
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#This command moves the molecule that selection1 “belongs” to onto the molecule that selection2 “belongs” to using only selection1 and selection2 to calculate the alignment. This is useful (for example) if you have two distantly-related proteins with conserved active sites.  You could select the active site residues of each, name them, and then align the molecules based only on the important residues.align PDB1, PDB2</span>
+</span></span><span style="display:flex;"><span>align my_selection1, my_selection2		
+</span></span></code></pre></div><h3 id="external-gui-controls">External GUI Controls:</h3>
+<ol>
+  <li>Changing the background, general appearance, and rendering options can be accomplished using the eternal GUI Setting menu.  These are pretty straightforward.</li>
+  <li>Ray tracing will provide you with high resolution images.  There are two options to initiate a ray trace: you can use the external GUI or the command line.
+    <ol type='a'>
+      <li>If using the external GUI, click the <code>Ray</code> button at the top right corner of the GUI.</li>
+      <li>The command line can also be used.  The command line affords more flexibility in outputting an image of defined size.</li>
+    </ol>
+  </li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Ray traces the current view at 2400 x 3600 pixels</span>
+</span></span><span style="display:flex;"><span>ray <span style="color:#ae81ff">2400</span>,<span style="color:#ae81ff">3600</span>
+</span></span></code></pre></div><ol start='3'>
+  <li>Saving images can be accomplished at any time by using the selecting <code>File >> Save Image As</code> in the external GUI.  Alternatively, the command line can be used as below.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#Save the current view as MyImage.png</span>
+</span></span><span style="display:flex;"><span>png MyImage<span style="color:#f92672">.</span>png
+</span></span></code></pre></div><ol start='4'>
+  <li>Saving your PyMOL session can also be accomplished at any time by selecting <code>File >> Save Session As</code>.  This is very useful as it will allow you to edit your work in the future.</li>
+</ol>
+<h3 id="other-things-to-note">Other things to note:</h3>
+<ul>
+  <li>PyMOL has a very powerful scripting language.  Everything that can be done with the GUI can be done by the command line (and more!).   Scripting allows you to either save your commands as you execute them or just write code from scratch.  This is invaluable when the same actions need to be performed repetitively or when something very minor changes in your coordinate.</li>
+  <li>There are many other graphics programs, but PyMOL seems to be the most popular.  Other programs that you may hear about include RasMOL, Raster3D, MolScript, Chimera, etc.  With cryoEM data becoming more and more prevalent, Chimera is especially becoming a more popular tool in the field.</li>
+</ul>
+<h3 id="useful-links">Useful links:</h3>
+<blockquote>
+<p><a href="http://www.rcsb.org">http://www.rcsb.org</a>	- For downloading publicly-available coordinate files <br>
+<a href="http://pymolwiki.org">http://pymolwiki.org</a> - A great resource on how to use PyMOL <br>
+<a href="http://www.pymol.org">http://www.pymol.org</a> - The PyMOL homepage <br></p>
+</blockquote>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/outreach/">Outreach</a>
+  
+  <a class="badge badge-light" href="/tags/pymol/">PyMOL</a>
+  
+  <a class="badge badge-light" href="/tags/pdb/">PDB</a>
+  
+  <a class="badge badge-light" href="/tags/featured/">Featured</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu3e2e5262fde0685011f78664d0947551_156917_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://jonipsaro.github.io/">Jonathan Ipsaro</a></h5>
+      <h6 class="card-subtitle">Principal Scientist, Structural Biology</h6>
+      <p class="card-text" itemprop="description">Biochemist with a penchant for integrated structural, biophysical, and computational methods.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-paper-plane"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://scholar.google.com/citations?user=FTH85coAAAAJ" target="_blank" rel="noopener">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://orcid.org/0000-0002-2743-3776" target="_blank" rel="noopener">
+              <i class="ai ai-orcid"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.linkedin.com/in/jon-ipsaro" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/jonipsaro" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/files/cv.pdf" >
+              <i class="ai ai-cv"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/invisible/">How do we see the invisible?</a></li>
+          
+          <li><a href="/post/illustrator/">Adobe Illustrator Workshop 2019</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.5de955cdd4419ab4243bd4397608cfa0.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    © Jonathan Ipsaro 2025
+    <br>
+    Made with <a href="https://www.r-project.org/"><i class="fab fa-r-project"></i></a> &nbsp;<a href="https://bookdown.org/yihui/blogdown/">blogdown</a>, <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener"><img src="https://jonipsaro.github.io/img/academic.png" style="height:1em;display:inline" alt="Academic theme"> Academic theme</a>, and <a href="https://gohugo.io" target="_blank" rel="noopener"><img src="https://jonipsaro.github.io/img/hugo.png" style="height:1em;display:inline" alt="Hugo"> Hugo</a>.  
+    <br>
+    Hosted by <a href="https://github.com/"><i class="fab fa-github"></i>&nbsp;Github</a>. &middot; Deployed with <a href="https://www.netlify.com/"><img src="https://jonipsaro.github.io/img/netlify.png" style="height:1em;display:inline" alt="Netlify"> Netlify</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

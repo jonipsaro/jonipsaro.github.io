@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Jonathan Ipsaro">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Quick Reference for cryo-EM data acquisition using EPU on the Titan Krios">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://jonipsaro.github.io/post/krios_acquire_k3/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#3f51b5">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.297ab9073395abeea153c005938a34ba.css">
+
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://jonipsaro.github.io/post/krios_acquire_k3/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Jonathan Ipsaro">
+  <meta property="og:url" content="https://jonipsaro.github.io/post/krios_acquire_k3/">
+  <meta property="og:title" content="Cryo-EM Data Acquisition with a K3 detector and EPU (CDS Mode) | Jonathan Ipsaro">
+  <meta property="og:description" content="Quick Reference for cryo-EM data acquisition using EPU on the Titan Krios"><meta property="og:image" content="https://jonipsaro.github.io/post/krios_acquire_k3/featured.png">
+  <meta property="twitter:image" content="https://jonipsaro.github.io/post/krios_acquire_k3/featured.png"><meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2023-01-27T00:00:00&#43;00:00">
+  
+  <meta property="article:modified_time" content="2023-01-27T00:00:00&#43;00:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>Cryo-EM Data Acquisition with a K3 detector and EPU (CDS Mode) | Jonathan Ipsaro</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Jonathan Ipsaro</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/cv.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="article-header d-xl-none">
+  <div class="featured-image" style="background-image: url('/post/krios_acquire_k3/featured_huacbeb308893c3a7b01ceab1e03281c6e_39672_800x0_resize_lanczos_3.png');"></div>
+  <span class="article-header-caption">Titan Krios Data Acquisition Setup</span>
+</div>
+
+
+<div class="container-fluid split-header d-none d-xl-block">
+  <div class="row">
+    <div class="col-6">
+      <div class="split-header-content">
+        <h1 itemprop="name">Cryo-EM Data Acquisition with a K3 detector and EPU (CDS Mode)</h1>
+
+        
+        <p class="page-subtitle">Quick Reference for cryo-EM data acquisition using EPU on the Titan Krios  ❄️</p>
+        
+
+        
+
+
+
+<meta content="2023-01-27 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2023-01-27 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">Jonathan Ipsaro</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jan 27, 2023</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    17 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+
+  
+
+</div>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+        
+
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="split-header-image">
+        <img src="/post/krios_acquire_k3/featured_huacbeb308893c3a7b01ceab1e03281c6e_39672_680x500_fill_q90_lanczos_top_3.png" itemprop="image" alt="">
+        <span class="article-header-caption">Titan Krios Data Acquisition Setup</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-container d-xl-none">
+  <h1 itemprop="name">Cryo-EM Data Acquisition with a K3 detector and EPU (CDS Mode)</h1>
+
+  
+  <p class="page-subtitle">Quick Reference for cryo-EM data acquisition using EPU on the Titan Krios  ❄️</p>
+  
+
+  
+
+
+
+<meta content="2023-01-27 00:00:00 &#43;0000 UTC" itemprop="datePublished">
+<meta content="2023-01-27 00:00:00 &#43;0000 UTC" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/admin/">Jonathan Ipsaro</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jan 27, 2023</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    17 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+
+  
+    
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      <h2 id="overview">Overview</h2>
+<p>Setting up data collection can be divided into these main steps:</p>
+<ol>
+	<li>GIF Tuning</li>
+	<li>Non-CDS Gain Reference Collection</li>
+	<li>Image Shift Calibration</li>
+	<li>Atlas Generation</li>
+	<li>Set Up the EPU Session</li>
+	<li>CDS Gain Reference Collection</li>
+	<li>Manual ZLP Centering</li>
+	<li>Perform Direct Alignments</li>
+	<li>Final Touches</li>
+</ol>
+<hr style='margin:35px 0'>
+<h2 id="step-1---tune-the-gif-optional">Step 1 - Tune the GIF (optional)</h2>
+<ol>
+	<li>Using the microscope computer, set the <code>Condenser Aperture</code> to 150.</li>
+	<li>If needed, the position of the slit can be moved manually. To do so, activate the camera <code>View</code>, click on the Gatan Filter Control Window (<code>Gatan >> Windows >> Filter Control</code>), and use the keyboard arrow keys to adjust.</li>
+	<li><code>Stop View</code></li>
+	<li>Set the spot size to 2 using the microscope control pad.</li>
+	<li>Insert the screen, center the beam using the track ball, and adjust the beam size and intesity to be approximately 1.5 times the size of the green circle. Retract the screen when finished.</li>
+	<li>The tuning needs to be performed in both linear and counted modes. Begin with the Gatan set to <code>linear</code>.
+	<li>On the Gatan computer <code>Tune GIF >> Quick Tune</code>. This will also center the ZLP.</li>
+	<li>When the GIF tuning is complete, an assement image will pop up on the Gatan computer. It should look fairly flat with muddy colors. If the GIF tuning fails completely or if the image is very colorful, it may be due to a beam intensity that is is too low. Reinsert the screen, increase the intensity, and try again.</li>
+</ol>
+<hr style='margin:35px 0'>
+<h2 id="step-2---non-cds-gain-reference-collection-optional">Step 2 - Non-CDS Gain Reference Collection (optional)</h2>
+<div style='background:pink; color:darkred'><B>CRITICAL:</B>  For Gain Reference Collection, Data Acquisition parameters must already be set and the ZLP should be centered. ZLP centering is performed as part of the GIF tuning protocol, so the ZLP is likely already centered.<BR><BR>Also note that during the automatic ZLP centering, the Gatan camera is taken out of CDS mode (if it was previously in CDS mode). For the initial gain references, you DO NOT want to be in CDS mode.</div>
+<p style='margin-bottom:15px'></p>
+<ol>
+	<li>Navigate to an empty grid square.</li>
+	<li>Check that the acquisiton parameters in EPU are reasonable. <code>Preparation >> Data Acquisition >> Preview</code></li>
+	<li>On the microscope computer, set the <code>Aperture</code> to 150.</li>
+	<li>Using the microscope control panel, set the spot size to 2.</li>
+	<li>On the microscope computer, insert the screen and check for fringes. If fringes are present, adjust the beam intensity using the control panel knobs and the beam position using the track ball.</li>
+	<li>Gain references will need to be collected in both counted and linear modes. Adjust the Gatan camera settings to be <code>Low Dose</code>, <code>Counted</code>, <code>0.5x</code>. Note:  If the camera is set to <code>Counted</code> then the gain reference acquisition will automatically advance from counted to linear mode. If the camera is set to <code>Linear</code>, only the linear gain references will be collected. That is not what you want.</li>
+	<li>Prepare gain references on the Gatan Computer. <code>Camera >>  Prepare Gain Reference</code>.</li>
+	<li>Follow the instructions when prompted by the Gatan Computer. You will need to adjust the beam intensity. Use the numbers on the Gatan display and adjust to the required value.</li>
+	<li>Manually check the beam centering by inserting the screen. If needed (i.e. the beam center is very far off), adjust the beam center postion by selecting <code>Direct Alignments >> Beamshift Center</code> on the microscope computer and adjusting the beam position with multifunction X and multifunction Y on the control pad. Center on the green circle. Retract the screen.</li>
+	<li>After the first set (linear) of gain references have been collected, make sure to re-set the <code>Data Acquisition</code> settings display for EPU. Click <code>Set</code>. Note:  The spot size should change back to 5 and the objective aperture should automatically change to 100 um if it was not already at 100 um and the C2 aperture should return to 70.</li>
+	<li>After the linear gain references have been collected, the counted mode gain reference collection window will appear. Check <code>Expert Mode</code> and make sure the <code>Dose Rate</code> is set to 10.0 and the <code>Gain Ref Electron</code> is at 3000. Click <code>OK</code>.</li>
+	<li>Follow the instructions when prompted by the Gatan Computer (similar to before). You will need to adjust the beam intensity. Use the numbers on the Gatan display and adjust to the required value.</li>
+	<li>When the gain reference is completed, open the Gatan camera. <code>View</code>.
+	<li>Set the view to <code>1x</code>.</li>
+	<li>Also activate the FFT window.</li>
+	<li>Both the main window and the FFT should be decently flat however with the latest acquisition setups the gain reference is not applied. Any imperfections in the image should be reflected by a similar pattern in the gain reference.</li>
+	<li>Set the <code>Data Acquisition</code> parameters by clicking <code>Set</code>.</li>
+</ol>
+<hr style='margin:35px 0'>
+<h2 id="step-3---image-shift-calibration">Step 3 - Image Shift Calibration</h2>
+<div style='background:pink; color:darkred'><B>CRITICAL:</B>  For the Image Shift Calibration, it is obligatory that all Preparation modes (Atlas at 175x, Grid Square, Hole/Eucentric Height, Data Acquisition/Auto Focus) are already set.</div>
+<h3 id="part-1---grid-square-selection">Part 1 - Grid Square Selection</h3>
+<div style='background:lemonchiffon; color:goldenrod'>Note:  This square will take a fair amount of radiation damage, so it is important that it is not a square that you plan to use for data acqusition. A square that has a few empty holes and some interestingly-shaped contamination is ideal.</div>
+<h3 id="part-2---locate-and-navigate-to-a-landmark">Part 2 - Locate and Navigate to a Landmark</h3>
+<ol>
+	<li>Navigate to <code>Preparation >> Atlas</code>.</li>
+	<li>Select a grid square that has an obvious landmark. Usually a piece of contaimination with a distinctive shape is desirable. If collecting on Lacey carbon grids, contamination near to an interesting carbon pattern is even better. Move the stage to that grid square and landmark. <code>(Right click) Move stage here</code>.</li>
+	<li>Check the grid square. <code>Preparation >> Grid Square >> Preview</code>.</li>
+	<li>Determine the eucentric height  <code>Auto Functions >> Hole/Eucentric Height >> Auto-eucentric by beam tilt.</code></li>
+	<li>Set the microscope parameters to match the Data Acqusition settings. <code>Preparation >> Data Acquisition >> Set</code>.</li>
+	<li>Sequentially center the stage position on the landmark at each magnification setting, ending with <code>Data Acquisition</code>.</li>
+</ol>
+<h3 id="part-3---perform-image-shift-calibration">Part 3 - Perform Image Shift Calibration</h3>
+<ol>
+	<li>Select <code>Preparation >> Tasks >> Calibrate Image Shifts >> Start Calibration</code>.</li>
+	<li>The Image Shift Calibration module will walk through the calibration. To continue, click <code>Proceed</code>.</li>
+	<li>When a new setting is applied and an image is generated, adjust the calibration center by double-clicking on the corresponding spot on the right image panel. It is advisable to re-acquire this image before moving on. When satisfied, click <code>Proceeed</code>. This will walk through each magnification setting, beginning from <code>Data Acquisition</code> and continuing through to <code>Atlas</code>.</li>
+</ol>
+<hr style='margin:35px 0'>
+<h2 id="step-4---generate-the-atlas">Step 4 - Generate the Atlas</h2>
+<ol>
+	<li>Select <code>Atlas >> Session Setup</code>.</li>
+	<li>Enter a path for the data (the folder will be created automatically). Images should be saved as <code>MRC</code> format.</li>
+	<li>Double-check the Atlas acquisition parameters <code>Preparation > Atlas</code>. For screening, a magnification 135x of is used to increase speed. For data collection atlases, a magnification of 175x is preferred.</li>
+	<li>Select the grid to be atlased.</li>
+	<li>Ensure that the objective aperture it out.</li>
+	<li>Begin the atlas acquisition by clicking <code>Start</code>.</li>
+</ol>
+<hr style='margin:35px 0'>
+<h2 id="step-5---set-up-the-epu-session">Step 5 - Set up the EPU Session</h2>
+<ol>
+	<li>Select <code>EPU >> Session Setup</code>.</li>
+	<li>Enter the setup parameters. Enter a path for the data (the folder will be created automatically). Image format should be saved as <code>MRC</code> format. The Dose fraction output should be <code>Tiff Lzw Non-gain normalized</code>.  Make sure that the acqusition type is <code>Manual</code> and <code>Faster</code>. Make sure to select the correct grid type and indicate the hole paramters (if applicable).</li>
+	<li>Still in the EPU window, use the <code>Atlas</code> tab to select a reasonable grid square.</li>
+	<li>Determine the eucentric height. Select <code>Preparation >> Hole/Eucentric Height >> Auto Eucentric Height by beam tilt</code>.  Note: Our microscope has a slight systematic error of about 2.5 um for the typical parameters.  Manually adjust the Z height using the microscope computer <code>Stage >> Set >> Z (subtract 2.5 microns) >> Go To</code>.</li>
+	<li>It can be useful to take an image of an empty hole in the grid for subsequent determination of approximate ice thickness. This can be done by centering on the empty hole, then selecting <code>Preparation >> Data Acquisition >> Acquire</code>. Note the dose (lower right window).</li>
+	<li>Check the grid square quality. Move to a hole that could be potenially useful for collection. Then collect an image <code>Preparation >> Data Acquisition >> Acquire</code>.</li>
+	<li>If the ice thickness is appropriate (usually ~80% of the empty hole dose is desireable), this square can be used for data collection. <code>EPU >> Atlas >> (Right Click on Grid Square) Add Square</code>.</li>
+	<li>Generate the pattern of images to be collected. <code>EPU >> Hole Selection >> Generate Pattern</code>. Use the brush too to manually remove i) empty holes/regions, ii) significant contamination, iii) thick ice near the edges of each grid square. Some of this can be automated using the controls in the top and right panels.  Note: If you intend on using the automatic hole selection (recommended), be very stringent in setting the cutoff values in the histogram!</li>
+	<li>Add the collection and focus parameters. Defocus values that are typically used begin around -2.2 microns and continue to -0.8 microns. To add these, enter the desired defocus value and click on the 📄 icon next to the entry field. It should now be present in the defocus values list above. Valeus can be removed by selecting them and clicking on the 🗑️ icon. Be sure to double check these and ensure that the values are negative!</li>
+	<li>Set the following parameters for Lacey carbon grids:
+		<ul>
+			<li>Image Shift Delay = 1.5 seconds</li>
+			<li>Minimum stage settling time = 12 seconds</li>
+			<li>Recurrance = After Distance = 10 microns</li>
+			<li>Focus using = Objective lens</li>
+		</ul>
+	</li>
+	<li>Alternatively, set the following parameters for Quantifoil grids:
+		<ul>
+			<li>Delay after Image Shift = 1.5 seconds</li>
+			<li>Delay after Stage Shift = 1 second</li>
+			<li>Recurrance = After Distance = 10 um</li>
+			<li>Focus = Objective lens</li>
+		</ul>
+	</li>
+	<li>If collecting from Lacey grids, use the <code>EPU >> Generate Template</code> to tile the grid square. Use a spacing of 1.2 um.</li>
+	<li>If collecting from Quantifoil grids, beam shift collection can dramatically speed up acquisiton. Use the <code>EPU >> Generate Template</code> to set this up. Be sure to include one shot for Autofocus. If you are unsure how to make an appropriate template, ask the Facility Manager.</li>
+	<li>Return to the <code>EPU >> Atlas</code> view. The grid square should now display the eucentric height determined earlier and the number of images to be collected should be indicated in the right-most panel.</li>
+	<li>Option 1 - Automatic (preferred):  Return to the Atlas view (<code>EPU >> Preparation >> Square Selection</code>) select more squares that look good for acquisition.  Once finished, go to <code>EPU >> Preparation >> Hole Selection >> Prepare All Squares</code>.</li>
+	<li>Option 2 - Manual:  Repeat this process beginning at item 3. It is not necessary to re-enter the collection  (item 9) as these should be preserved from earlier, but remember to update the Z-height after determining the eucentric height for each square.  Continue adding more grid squares until there are enough for the desired collection time.</li>
+</ol>
+<hr style='margin:35px 0'>
+<h2 id="step-6---manual-centering-of-the-zlp-optional">Step 6 - Manual Centering of the ZLP (optional)</h2>
+<div style='background:pink; color:darkred'><B>IMPORTANT:</B>  Centering the ZLP will disable CDS mode without notification. If centering the ZLP, make sure to double-check that CDS mode is enabled afterward.</div>
+<p style='margin-bottom:15px'></p>
+<ol>
+	<li>Make sure the <code>Data Acquisition</code> parameters are set and active.</li>
+	<li>Adjust the Gatan camera settings to be <code>Low Dose</code>, <code>Linear</code>, <code>1x</code>.</li>
+	<li>Make sure the camera is active by clicking <code>View</code>. 
+	<li>On the Gatan computer open the <code>Filter Control</code> window.</li>
+	<li>Click on the text field <code>Filter Control >> Main >> Adjust >> X.X eV</code>. Using the arrow keys (up and down), adjust the ZLP position. Make sure to count how many times you click in a given direction.</li>
+	<li>Move in the up direction. You should eventually find the edge of the ZLP as the camera image will have aberrations. This is usually 10-14 clicks.</li>
+	<li>Now navigate using the down arrow key back into the slit and to the bottom edge (while counting).</li>
+	<li>Navigate back up into the slit to make up half of the distance. Example:  If it took 24 clicks from the 'top' edge of the slit to the 'bottom' edge of the slit, navigate back 12 times to center the slit.</li>
+	<li>Click the <code>O</code> button to the left of the adjustment text box to set this current slit position to 0.</li>
+	<li style='background:pink; color:darkred'>CRITICAL: Make sure to put the camera back in <code>Counted</code>, <code>0.5</code>.</li>
+</ol>
+<hr style='margin:35px 0'>
+<h2 id="step-7---cds-mode-gain-reference-collection">Step 7 - CDS Mode Gain Reference Collection</h2>
+<div style='background:pink; color:darkred'><B>CRITICAL:</B>  For Gain Reference Collection, Data Acquisition parameters must already be set and the ZLP should be centered. <BR>This time, do NOT center the ZLP using the automatic ZLP centering function on the Gatan computer. Doing so will cause the camera to come out of CDS mode. If you accidentally center the ZLP this way, make sure to reactivate CDS mode as described above.</div>
+<p style='margin-bottom:15px'></p>
+<ol>
+	<li>Make sure the Gatan is set to CDS mode <code>Technique Manager >> Low Dose >> EF-CCD Camera >> Gear Icon (to the right of "View").</code>  Make sure to set <code>Corrections: Unprocessed</code>, <code>Correct defects: Checked</code>, <code>CDS Mode: Checked</code></li>
+	<li>Navigate to an empty grid square.</li>
+	<li>Check that the acquisiton parameters in EPU are reasonable. <code>Preparation >> Data Acquisition >> Preview</code></li>
+	<li>On the microscope computer, set the <code>Condenser Aperture</code> to 150.  Just select <code>150</code>.  Do NOT click adjust.</li>
+	<li>Using the microscope control panel, set the spot size to 2.</li>
+	<li>On the microscope computer, insert the screen and check for fringes. If fringes are present, adjust the beam intensity using the control panel knobs and the beam position using the track ball.</li>
+	<li>Gain references will need to be collected in both counted and linear modes. Adjust the Gatan camera settings to be <code>Low Dose</code>, <code>Counted</code>, <code>0.5x</code>. Note:  If the camera is set to <code>Counted</code> then the gain reference acquisition will automatically advance from counted to linear mode. If the camera is set to <code>Linear</code>, only the linear gain references will be collected. That is not what you want.</li>
+	<li>Prepare gain references on the Gatan Computer. <code>Camera >>  Prepare Gain Reference</code>.</li>
+	<li>Follow the instructions when prompted by the Gatan Computer. You will need to adjust the beam intensity. Use the numbers on the Gatan display and adjust to the required value.</li>
+	<li>Manually check the beam centering by inserting the screen. If needed (i.e. the beam center is very far off), adjust the beam center postion by selecting <code>Direct Alignments >> Beamshift Center</code> on the microscope computer and adjusting the beam position with multifunction X and multifunction Y on the control pad. Center on the green circle. Retract the screen.</li>
+	<li>After the first set (linear) of gain references have been collected, make sure to re-set the <code>Data Acquisition</code> settings display for EPU. Click <code>Set</code>. Note:  The spot size should change back to 5 and the objective aperture should automatically change to 100 um if it was not already at 100 um and the C2 aperture should return to 70.</li>
+	<li>After the linear gain references have been collected, the counted mode gain reference collection window will appear. Check <code>Expert Mode</code> and make sure the <code>Dose Rate</code> is set to 10.0 and the <code>Gain Ref Electron</code> is at 3000. Click <code>OK</code>.</li>
+	<li>Follow the instructions when prompted by the Gatan Computer (similar to before). You will need to adjust the beam intensity. Use the numbers on the Gatan display and adjust to the required value.</li>
+	<li>Set the <code>Data Acquisition</code> parameters by clicking <code>Set</code>.</li>
+	<li>When the gain reference is completed, open the Gatan camera. Set the view to <code>1x</code> and click <code>View</code>.
+	<li>Also activate the FFT window.</li>
+	<li>Both the main window and the FFT should be decently flat however with the latest acquisition setups the gain reference is not applied. Any imperfections in the image should be reflected by a similar pattern in the gain reference. When statisfied <code>Stop View</code>.</li>
+	<li>Bin and export the CDS gain reference. Navigate to <code>C:/ProgramData/Gatan/ReferenceImages/</code>. There should be two sets of gain references. One set for non-CDS (i.e. 'normal') mode that are rather stable. The other set are for CDS mode and include the ones you just collected. Open the image, then rebin it. <code>Process >> Re-bin by Two >> Save As...</code>. Make sure NOT to overwrite the original. Change the name following the convention CDSbinnedgainrefMMDDYY.mrc. Save it in the DoseFractions folder.</li>
+	<li>Set the <code>Data Acquisition</code> parameters by clicking <code>Set</code>.</li><li>Activate the Gatan camera (<code>View</code>), check that the empty image quality is reasonable (although keep in mind that it is not gain corrected), and record the empty dose. This should be something around 14 electrons/pixel/second.</li>
+</ol>
+<hr style='margin:35px 0'>
+<h2 id="step-8---perform-direct-alignments">Step 8 - Perform Direct Alignments</h2>
+<h3 id="part-1---grid-square-selection-1">Part 1 - Grid Square Selection</h3>
+<div style='background:lemonchiffon; color:goldenrod'>Note:  As with the Image Shift Calibration, this square will take a fair amount of radiation damage, so it is important that it is not a square that you plan to use for data acqusition. A square that has a few empty holes and some interestingly-shaped contamination is ideal.</div>
+<p style='margin-bottom:15px'></p>
+<ol>
+	<li>Use EPU to navigate to a new grid square. Move to an empty hole for best contrast.</li>
+	<li>Determine the eucentric height. <code>Auto functions >> Hole Eucentric >> Eucentric Height by Beam Tilt</code></li>
+	<li>Position the beam on the edge of an empty hole. This can be done using the EPU controls or by using the joystick on the control panel if the screen is inserted.</li>
+</ol>
+<h3 id="part-2---initial-focus-determination">Part 2 - Initial Focus Determination</h3>
+<p>Overview:  This part of the protocol will serve to tune the eucentric height and find focus. It will be refined in Part 5.</p>
+<ol>
+	<li>Insert the screen</li>
+	<li>Set the eucentric height manually
+		<ol type="a">
+			<li>Set the microscope optics to the Data Acquisition setting. <code>Preparation >> Data Acquisition >> SET</code></li>
+			<li>Use the control panel joystick to move to an area where you can see the edge of the hole and some carbon.</li>
+			<li>Set the alpha angle to +/- 20 degrees. This command can be found on the microscope computer under the Stage menu (lower right corner) in the Control tab. You will need to activate the popout extension from the Stage parameters menu to adjust the alpha angle. The stage should rotate. The goal is to adjust the Z-height of the stage such that changing alpha +/- 20 degrees keeps the center of the image in place. Z-height can be adjusted using the control panel (rightmost buttons).</li>
+			<li>When adjusting the height, it is likely necessary to toggle between alpha=0 and alpha=20.</li>
+			<li>When satisfied with the Z-height adjustment, make sure to set alpha back to 0 degrees.</li>
+		</ol>
+	</li>
+	<li>Use the control panel joystick to move the beam over some carbon.</li>
+	<li>Find focus using the Gatan computer
+		<ol type="a">
+			<li>Retract the screen</li>
+			<li>Check the Gatan camera parameters. The <code>exposure time</code> should be 1x. The mode should be <code>counted</code>.
+			<li>Activate the Gatan camera. <code>View</code></li>
+			<li>Using the FFT window, find focus. Use the defocus knob on the control panel and adjust until no Thon rings are apparent.</li>
+			<li>Reset the defocus to 0 using the control panel.</li>
+			<li>Deactivate the Gatan camera. <code>Stop View</code></li>
+		</ol>
+	</li>
+</ol>
+<h3 id="part-3---initialize-direct-alignments">Part 3 - Initialize Direct Alignments</h3>
+<ol>
+	<li>Insert the screen.</li>
+	<li>Activate the direct aligments menu (bottom right).</li>
+	<li>Sequentially adjust the alignments:
+		<ol type="a">
+			<li>nP beam tilt ppX (use multifunction X to minimize movement)</li>
+			<li>nP beam tilt ppY (use multifunction X to minimize movement)</li>
+			<li>beamshift center (use both knobs; center on the green circle)</li>
+			<li>rotation center (minimize movement; use both knobs)</li>
+		</ol>
+	</li>
+	<li>Click <code>Done</code> when finished.</li>
+	<li>Retract the screen.</li>
+</ol>
+<h3 id="part-4---initial-astigmatism-correction-and-coma-free-alignment">Part 4 - Initial Astigmatism Correction and Coma-Free Alignment</h3>
+<ol>
+	<li>Open the Sherpa window. If Sherpa is not already running, it can be launched from <code>Microscope Software Launcher >> Tools >> Sherpa</code>.</li>
+	<li>Use the control panel to dial in approximately -0.9 um defocus (note: this may vary depending on the magnification being used)</li>
+	<li>Check and/or set the following parameters:</li>
+		<ul>Type: EF-CCD</ul>
+		<ul>Exposure time [s]: 2.0</ul>
+		<ul>Binning: 2</ul>
+		<ul>Readout area: Full</ul>
+		<ul>Electron counting: checked</ul>
+		<ul>Autofocus to [um]: -0.9, checked</ul>
+	<li>Measure the objective stigmation. <code>Measure</code></li>
+	<li>Correct the objective stigmation. <code>Correct</code></li>
+</ol>
+<h3 id="part-5---focus-determination">Part 5 - Focus Determination</h3>
+<ol>
+	<li>Activate the Gatan camera. <code>View</code></li>
+	<li>Determine the correction from Sherpa (the defocus used is in the Sherpa window; the set defocus is listed in the current optics parameters on the microscope computer)</li>
+	<li>Adjust the current defocus by the amount calculated above. This should get you very close to focus.</li>
+	<li>Check for focus using the FFT window. It should be quite good. Make fine adjustments if needed using the defocus knob on control panel.</li>
+	<li>If the defocus setting at focus is more than 0.2 microns from what is expected, <code>Stop View</code> and return to Part 3 - Initialize Direct Alignments for another try.</li>
+	<li>Reset the defocus to 0 using the control panel.</li>
+	<li>Deactivate the Gatan camera. <code>Stop View</code>.</li>
+</ol>
+<h3 id="part-6---final-astigmatism-correction-and-comafree-alignment">Part 6 - Final Astigmatism Correction and ComaFree Alignment</h3>
+<ol>
+	<li>Open the Sherpa window</li>
+	<li>Use the control panel to dial in approximately -0.9 um defocus (note: this may vary depending on the magnification being used)</li>
+	<li>Measure the objective stigmation. <code>Measure</code></li>
+	<li>Correct the objective stigmation. <code>Correct</code></li>
+	<li>Correct the coma. <code>Correct</code></li>
+	<li>Measure the objective stigmation. <code>Measure</code>. Correct if needed.</li>
+	<li>Cycle between the objective stigmation and coma-free alignment until both are accurate and the errors are small.</li>
+	<li>The last step should be measurement of the objective stigmation with the astigmatism measuring 1 nm or less.</li>
+</ol>
+<h3 id="div-stylebackgroundpink-colordarkredpart-7---import-settings-to-epu---criticaldiv"><div style='background:pink; color:darkred'>Part 7 - Import Settings to EPU - CRITICAL!</div></h3>
+<ol>
+	<li>Set the Data Acquisition optics parameters. <code>EPU >> Preparation >> Data Acquisition >> GET</code></li>
+	<li>Set the Autofocus optics parameters. <code>EPU >> Preparation >> Autofocus >> GET</code></li>
+	<li>Write down or photograph the current Hole Eucentric optics paramters. Once you have written them down, <code>EPU >> Preparation >> Hole Eucentric >> GET</code>. Then manually repopulate the Hole Eucentric parameters.
+</ol>
+<hr style='margin:35px 0'>
+<h2 id="step-9---final-touches-and-start">Step 9 - Final Touches and Start</h2>
+<ol>
+	<li><div style='background:pink; color:darkred'><B>CRITICAL - Double Check the Following:</B>
+		<ul>Microscope computer - The stage rotation (alpha) is set to zero. Stage >> Popout >> alpha</ul>
+		<ul>Microscope computer - The Turbo pump is OFF.</ul>
+		<ul>Microscope computer - The 100 um objective aperture is inserted.<BR>Note:  If the objective was not inserted, it is necessary to redo the direct alignments.</ul>
+		<ul>Gatan computer - The camera mode is Counted.</ul>
+	</div></li>
+	<li>Start the automated acquisition <code>EPU >> Automated Acquistion >> Start Run!</code></li>
+</ol>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/cryo-em/">Cryo-EM</a>
+  
+  <a class="badge badge-light" href="/tags/instructions/">Instructions</a>
+  
+  <a class="badge badge-light" href="/tags/protocols/">Protocols</a>
+  
+  <a class="badge badge-light" href="/tags/featured/">Featured</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hu3e2e5262fde0685011f78664d0947551_156917_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://jonipsaro.github.io/">Jonathan Ipsaro</a></h5>
+      <h6 class="card-subtitle">Principal Scientist, Structural Biology</h6>
+      <p class="card-text" itemprop="description">Biochemist with a penchant for integrated structural, biophysical, and computational methods.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-paper-plane"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://scholar.google.com/citations?user=FTH85coAAAAJ" target="_blank" rel="noopener">
+              <i class="ai ai-google-scholar"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://orcid.org/0000-0002-2743-3776" target="_blank" rel="noopener">
+              <i class="ai ai-orcid"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://www.linkedin.com/in/jon-ipsaro" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/jonipsaro" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/files/cv.pdf" >
+              <i class="ai ai-cv"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/krios_acquire_k2/">Cryo-EM Data Acquisition with a K2 detector and EPU [Deprecated]</a></li>
+          
+          <li><a href="/post/krios/">Cryo-EM Sample Preparation</a></li>
+          
+          <li><a href="/post/krios_energy/">Cryo-EM Setup for Changing Energy</a></li>
+          
+          <li><a href="/post/talos/">Negative Stain EM Imaging with the Talos</a></li>
+          
+          <li><a href="/post/pymol/">PyMOL Tutorial 2018</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.5de955cdd4419ab4243bd4397608cfa0.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    © Jonathan Ipsaro 2025
+    <br>
+    Made with <a href="https://www.r-project.org/"><i class="fab fa-r-project"></i></a> &nbsp;<a href="https://bookdown.org/yihui/blogdown/">blogdown</a>, <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener"><img src="https://jonipsaro.github.io/img/academic.png" style="height:1em;display:inline" alt="Academic theme"> Academic theme</a>, and <a href="https://gohugo.io" target="_blank" rel="noopener"><img src="https://jonipsaro.github.io/img/hugo.png" style="height:1em;display:inline" alt="Hugo"> Hugo</a>.  
+    <br>
+    Hosted by <a href="https://github.com/"><i class="fab fa-github"></i>&nbsp;Github</a>. &middot; Deployed with <a href="https://www.netlify.com/"><img src="https://jonipsaro.github.io/img/netlify.png" style="height:1em;display:inline" alt="Netlify"> Netlify</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

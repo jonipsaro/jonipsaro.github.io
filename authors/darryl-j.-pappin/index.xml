@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Darryl J. Pappin on Jonathan Ipsaro</title>
+    <link>https://jonipsaro.github.io/authors/darryl-j.-pappin/</link>
+    <description>Recent content in Darryl J. Pappin on Jonathan Ipsaro</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jonathan Ipsaro {year}</copyright>
+    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://jonipsaro.github.io/authors/darryl-j.-pappin/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tryp-N: A Thermostable Protease for the Production of N-terminal Argininyl and Lysinyl Peptides</title>
+      <link>https://jonipsaro.github.io/publication/wilson-trypn-2020/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/wilson-trypn-2020/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Proteases for the production of N-terminal argininyl-and lysinyl-peptides and methods of use in protein analysis</title>
+      <link>https://jonipsaro.github.io/publication/pappin-proteases-2017/</link>
+      <pubDate>Tue, 01 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/pappin-proteases-2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NSD3-Short Is an Adaptor Protein that Couples BRD4 to the CHD8 Chromatin Remodeler</title>
+      <link>https://jonipsaro.github.io/publication/shen-nsd-3-short-2015/</link>
+      <pubDate>Thu, 17 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/shen-nsd-3-short-2015/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

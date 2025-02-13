@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Outreach on Jonathan Ipsaro</title>
+    <link>https://jonipsaro.github.io/tags/outreach/</link>
+    <description>Recent content in Outreach on Jonathan Ipsaro</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jonathan Ipsaro {year}</copyright>
+    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://jonipsaro.github.io/tags/outreach/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PyMOL Tutorial 2018</title>
+      <link>https://jonipsaro.github.io/post/pymol/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/post/pymol/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;I have instructed PyMOL tutorials numerous times for first year graduate students (and even occasional faculty members!).  Course materials can be found in the downloads.  An outline of the course contents is also provided.&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tutorial-downloads&#34;&gt;Tutorial Downloads&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;PyMOL_Tutorial_2018.docx&#34;&gt;Tutorial Documentation - MS Word&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;PyMOL_Practice.docx&#34;&gt;Practice Questions - MS Word&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;PyMOL_Practice.pse&#34;&gt;Practice Question - PyMOL Session (Finished)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;PyMOL_Quiz_2018.docx&#34;&gt;Quiz - MS Word&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;workshop-notes&#34;&gt;Workshop Notes&lt;/h2&gt;
+&lt;h3 id=&#34;what-pymol-does-and-does-not-do&#34;&gt;What PyMOL does and does not do:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;PyMOL is a molecular graphics program that is primarily designed for producing publication-quality illustrations and animations.&lt;/li&gt;
+  &lt;li&gt;In its purest form, PyMOL is NOT used for molecular modeling, structure manipulation, or &lt;i&gt;in silico&lt;/i&gt; experiments.&lt;/li&gt;
+  &lt;li&gt;PyMOL is user-sponsored but runs on an open source platform.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;about-the-pdb-file-format&#34;&gt;About the PDB file format&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;The main file format you will use with PyMOL has the extension .pdb (Protein Data Bank).&lt;/li&gt;
+  &lt;li&gt;PDB files are &lt;b&gt;plain text&lt;/b&gt; documents and have a straightforward and consistent structure.  The &lt;b&gt;spacing&lt;/b&gt; of entries is critical to the file being read properly.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;tr&gt;&lt;th&gt;Line Identifier&lt;/th&gt;&lt;th&gt;Description&lt;/th&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Title&lt;/td&gt;&lt;td&gt;&lt;i&gt;Name of the entry&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Remarks&lt;/td&gt;&lt;td&gt;&lt;i&gt;Descriptors for everything used in the project.  This includes biological, chemical, physical, crystallographic, refinement, and processing parameters.&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;CRYS1 card&lt;/td&gt;&lt;td&gt;&lt;i&gt;Unit cell dimensions for the crystal&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Origin and Scale Cards&lt;/td&gt;&lt;td&gt;&lt;i&gt;Sets the coordinate system&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;ATOM entries&lt;/td&gt;&lt;td&gt;&lt;i&gt;Coordinates (see below)&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;ANISOU entries&lt;/td&gt;&lt;td&gt;&lt;i&gt;Optional anisotropic temperature factor line&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Terminators (TER, END)&lt;/td&gt;&lt;td&gt;&lt;i&gt;Indicates the end of chains or the end of the file&lt;/i&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;b&gt;bare minimum&lt;/b&gt; .pdb file has a CRYS1 card and atom entries.&lt;/li&gt;
+  &lt;li&gt;Each ATOM entry has several parameters (in order):
+    &lt;ul&gt;
+    &lt;li&gt;atom card&lt;/li&gt;
+    &lt;li&gt;atom number&lt;/li&gt;
+    &lt;li&gt;atom identity&lt;/li&gt;
+    &lt;li&gt;amino acid identity&lt;/li&gt;
+    &lt;li&gt;chain identity&lt;/li&gt;
+    &lt;li&gt;amino acid number&lt;/li&gt;
+    &lt;li&gt;x, y, z, coordinates&lt;/li&gt;
+    &lt;li&gt;occupancy (0.00-1.00)&lt;/li&gt;
+    &lt;li&gt;temperature factor (B-factor)&lt;/li&gt;
+    &lt;li&gt;atomic element&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-pymol-interface&#34;&gt;The PyMOL Interface&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Both GUI and command line driven&lt;/li&gt;
+  &lt;li&gt;Has two GUIs (External and Internal):
+    &lt;ul&gt;
+      &lt;li&gt;The &lt;b&gt;external&lt;/b&gt; GUI is used for rendering images, creating animations, and controlling many of PyMOL’s settings.&lt;/li&gt;
+      &lt;li&gt;The &lt;b&gt;internal&lt;/b&gt; GUI is used for controlling exactly what objects and elements are displayed, how they are colored, and how they are positioned.&lt;/li&gt;
+      &lt;li&gt;&lt;i&gt;Think of PyMOL as a photo shoot.  The internal GUI controls what your model is wearing and how the subject is positioned.  The external GUI controls the settings on your camera.&lt;/i&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;img src=&#34;pymol_windows.png&#34; alt=&#34;PyMOL screenshot&#34;&gt;
+&lt;h3 id=&#34;opening-files&#34;&gt;Opening Files&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Option 1:  Go to &lt;a href=&#34;http://www.pdb.org/&#34;&gt;www.pdb.org&lt;/a&gt; and find the PDB file you would like.  Download the coordinates.  Then use &lt;code&gt;File &gt;&gt; Open&lt;/code&gt; to browse and open the file.&lt;/li&gt;
+  &lt;li&gt;Option 2:  Use the command line.  Simply type &lt;code&gt;fetch&lt;/code&gt; followed by the PDB code.
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fetch &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;SU3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;internal-gui-controls&#34;&gt;Internal GUI Controls:&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Change molecular orientation (mouse controls)
+    &lt;table&gt;
+      &lt;tr&gt;&lt;th&gt;Mouse Button&lt;/th&gt;&lt;td&gt;Left&lt;/td&gt;&lt;td&gt;Middle&lt;/td&gt;&lt;td&gt;Right&lt;/td&gt;&lt;td&gt;Wheel&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Drag&lt;/td&gt;&lt;td&gt;Rotation&lt;/td&gt;&lt;td&gt;Move&lt;/td&gt;&lt;td&gt;Zoom&lt;/td&gt;&lt;td&gt;Slab&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Click&lt;/td&gt;&lt;td&gt;Pick Atom&lt;/td&gt;&lt;td&gt;Center&lt;/td&gt;&lt;td&gt;Menu&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;/table&gt;
+  Note: These are also indicated in the lower-right corner of the internal GUI window.
+  &lt;/li&gt;
+  &lt;li&gt;Changing the appearance of molecules or selections - There are 5 main buttons next to each element:&lt;br&gt;
+    &lt;table&gt;
+      &lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;Actions&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;S&lt;/td&gt;&lt;td&gt;Show (display the selection in a certain way, i.e. &#39;cartoon&#39;, &#39;surface&#39;, etc.)&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;H&lt;/td&gt;&lt;td&gt;Hide (hide certain selection features that are currently displayed)&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;L&lt;/td&gt;&lt;td&gt;Label&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;C&lt;/td&gt;&lt;td&gt;Color&lt;/td&gt;&lt;/tr&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Selecting molecules, chains, atoms, or regions can be accomplished either through the command line or by pointing and clicking.  Here are the three most useful ways I like:
+  &lt;ol type=&#39;a&#39;&gt;
+    &lt;li&gt;Click on the residue of interest.  You will see that a (sele) object has been created in the internal GUI.  You can rename this object and PyMOL will remember the selection in the future.  The selection can be edited later as well.&lt;/li&gt;
+    &lt;li&gt;Use the external GUI can click &lt;code&gt;Display &gt;&gt; Sequence On&lt;/code&gt;.  This will show you the amino acid sequence of the structure.  You can select residues by clicking on them.&lt;/li&gt;
+    &lt;li&gt;Use the &lt;code&gt;select&lt;/code&gt; command line command.  This command is very powerful, but may take some time to get the hang of.&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#This will select chain A and name it “mychain”&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;select mychain, chain A
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#This will select all c, o, n, and alpha-carbon atoms and name the selection “certainatoms”&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;select certainatoms, name c&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;o&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;ca	
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#This will select everything that is both in a selection named “file1” and annotated as chain B. Note that there is no comma in this command.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;select file1 &lt;span style=&#34;color:#f92672&#34;&gt;and&lt;/span&gt; chain B
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#This will select everything that is both in a selection named “file1” and annotated as chain B and then name the selection “file1chainB”&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;select file1chainB, file1 &lt;span style=&#34;color:#f92672&#34;&gt;and&lt;/span&gt; chain B
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#39;4&#39;&gt;
+  &lt;li&gt;Distances and angles can be measured using the measurement wizard.  The wizard can be found under &lt;code&gt;Wizard &gt;&gt; Measurement&lt;/code&gt;.
+    &lt;ol type=&#39;a&#39;&gt;
+      &lt;li&gt;To measure distances, you will simply need to click each atom.  After clicking the second atom, a dashed line and distance (in Angstroms) will appear.&lt;/li&gt;
+      &lt;li&gt;To measure angles, you will need to first change the measurement mode from &lt;code&gt;Distances&lt;/code&gt; to &lt;code&gt;Angles&lt;/code&gt; in the lower right corner of the internal GUI.  Then click on three atoms.  The angle will be displayed.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Other useful display features:
+    &lt;ol type=&#39;a&#39;&gt;
+      &lt;li&gt;Electrostatics can be generated using the &lt;code&gt;Action&lt;/code&gt; button for an object.  Simply click &lt;code&gt;Action &gt;&gt; generate &gt;&gt; vacuum electrostatics&lt;/code&gt;.  Note that these are rather quick-and-dirty (i.e. not publishable) but can give a nice approximation of the electrostatic surface.  For a publishable electrostatic surface, plug-ins are required such as APBS.&lt;/li&gt;
+      &lt;li&gt;Symmetry-related molecules can also be generated using the &lt;code&gt;Action&lt;/code&gt; button.  This is particularly useful if a molecule adopts a symmetric structure that is coincident with a crystallographic axis.  Click &lt;code&gt;Action &gt;&gt; generate &gt;&gt; symmetry mates&lt;/code&gt; and select a distance  (5 Å is usually good enough).  You can then hide the molecules that you are not interested in (or delete them altogether)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Alignment
+    &lt;ol type=&#39;a&#39;&gt;
+      &lt;li&gt;One of the most useful features that PyMOL boasts is a native three-dimensional alignment algorithm.&lt;/li&gt;
+      &lt;li&gt;Alignment of two objects can be performed simply using the &lt;code&gt;align&lt;/code&gt; -or- &lt;code&gt;super&lt;/code&gt; command line commands.&lt;/li&gt;
+      &lt;li&gt;Note that alignments can be performed between entire structure depositions, specific chains, or even selected residues.  Define your selection (described above), name them, and use the align command to superpose one molecule onto the other.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#This command attempts to move the entire PDB coordinates of PDB1 onto PDB2. This would work well for two homologous structures with one copy in the asymmetric unit&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;align PDB1, PDB2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#Alternatively, the super command can be used.  The results may be slightly different.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;super PDB1, PDB2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#This command moves the molecule that selection1 “belongs” to onto the molecule that selection2 “belongs” to using only selection1 and selection2 to calculate the alignment. This is useful (for example) if you have two distantly-related proteins with conserved active sites.  You could select the active site residues of each, name them, and then align the molecules based only on the important residues.align PDB1, PDB2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;align my_selection1, my_selection2		
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;external-gui-controls&#34;&gt;External GUI Controls:&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Changing the background, general appearance, and rendering options can be accomplished using the eternal GUI Setting menu.  These are pretty straightforward.&lt;/li&gt;
+  &lt;li&gt;Ray tracing will provide you with high resolution images.  There are two options to initiate a ray trace: you can use the external GUI or the command line.
+    &lt;ol type=&#39;a&#39;&gt;
+      &lt;li&gt;If using the external GUI, click the &lt;code&gt;Ray&lt;/code&gt; button at the top right corner of the GUI.&lt;/li&gt;
+      &lt;li&gt;The command line can also be used.  The command line affords more flexibility in outputting an image of defined size.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#Ray traces the current view at 2400 x 3600 pixels&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ray &lt;span style=&#34;color:#ae81ff&#34;&gt;2400&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;3600&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#39;3&#39;&gt;
+  &lt;li&gt;Saving images can be accomplished at any time by using the selecting &lt;code&gt;File &gt;&gt; Save Image As&lt;/code&gt; in the external GUI.  Alternatively, the command line can be used as below.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#Save the current view as MyImage.png&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;png MyImage&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;png
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#39;4&#39;&gt;
+  &lt;li&gt;Saving your PyMOL session can also be accomplished at any time by selecting &lt;code&gt;File &gt;&gt; Save Session As&lt;/code&gt;.  This is very useful as it will allow you to edit your work in the future.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;other-things-to-note&#34;&gt;Other things to note:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;PyMOL has a very powerful scripting language.  Everything that can be done with the GUI can be done by the command line (and more!).   Scripting allows you to either save your commands as you execute them or just write code from scratch.  This is invaluable when the same actions need to be performed repetitively or when something very minor changes in your coordinate.&lt;/li&gt;
+  &lt;li&gt;There are many other graphics programs, but PyMOL seems to be the most popular.  Other programs that you may hear about include RasMOL, Raster3D, MolScript, Chimera, etc.  With cryoEM data becoming more and more prevalent, Chimera is especially becoming a more popular tool in the field.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;useful-links&#34;&gt;Useful links:&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.rcsb.org&#34;&gt;http://www.rcsb.org&lt;/a&gt;	- For downloading publicly-available coordinate files &lt;br&gt;
+&lt;a href=&#34;http://pymolwiki.org&#34;&gt;http://pymolwiki.org&lt;/a&gt; - A great resource on how to use PyMOL &lt;br&gt;
+&lt;a href=&#34;http://www.pymol.org&#34;&gt;http://www.pymol.org&lt;/a&gt; - The PyMOL homepage &lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>How do we see the invisible?</title>
+      <link>https://jonipsaro.github.io/post/invisible/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/post/invisible/</guid>
+      <description>&lt;h2 id=&#34;public-presentation-molecular-photography&#34;&gt;Public Presentation: Molecular Photography&lt;/h2&gt;
+&lt;p&gt;Every other year, Cold Spring Harbor Laboratory hosts a full-day Open House.  The event welcomes our Long Island community (and others!) for a full day of campus tours, demonstrations, and short science talks.  I was fortunate to be selected to highlight the motivations, methods, and magic of structural biology which allows us to peer into the invisible world of molecules.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/7yxt4QS0J7U&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+    <item>
+      <title>Adobe Illustrator Workshop 2019</title>
+      <link>https://jonipsaro.github.io/post/illustrator/</link>
+      <pubDate>Sun, 30 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/post/illustrator/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Several times a year, I instruct an Adobe Illustrator course with the needs of scientists specifically in mind.  Course materials can be found in the downloads.  An approximate schedule is also provided below.&lt;/p&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tutorial-downloads&#34;&gt;Tutorial Downloads&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;mac_cc.jpg&#34;&gt;Adobe Illustrator - CC - MacOS cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;windows_cc.jpg&#34;&gt;Adobe Illustrator - CC - Windows cheat sheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;examples.zip&#34;&gt;Examples.zip&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;poster.zip&#34;&gt;Poster.zip&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;workshop-schedule&#34;&gt;Workshop Schedule&lt;/h2&gt;
+&lt;h3 id=&#34;session-1--basics&#34;&gt;Session 1:  Basics&lt;/h3&gt;
+&lt;p&gt;&lt;i&gt;&lt;ul&gt;&lt;li&gt;How to make a poster, assuming you already have all the graphs and cartoons to include.&lt;/li&gt;&lt;/p&gt;
+&lt;li&gt;Pre-requisites: No previous knowledge of the software required; Adobe Illustrator installed on laptop (IT can do it)&lt;/li&gt;
+&lt;/ul&gt;&lt;/i&gt;
+&lt;h4 id=&#34;1-using-the-workspace-10-minutes--1000am--1010am&#34;&gt;1: Using the workspace (10 minutes) – 10:00am – 10:10am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Exploring the interface &lt;br&gt;
+Setting up an artboard &lt;br&gt;
+Opening a file (embedding and linking) &lt;br&gt;
+Zooming and scrolling &lt;br&gt;
+Tools (arrows, anchor points) &lt;br&gt;
+Shortcuts&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;2-learning-essential-skills-10-minutes--1010am-1020am&#34;&gt;2: Learning essential skills (10 minutes) – 10:10am-10:20am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Using the shape tools &lt;br&gt;
+Repositioning and resizing shapes &lt;br&gt;
+The Transform panel &lt;br&gt;
+Entering exact dimensions &lt;br&gt;
+Cutting and pasting objects &lt;br&gt;
+Using clipping masks &lt;br&gt;
+Pathfinder&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;3-colors-10-minutes--1020am-1030am&#34;&gt;3: Colors (10 minutes) – 10:20am-10:30am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;RGB vs CYMK &lt;br&gt;
+Line weights &lt;br&gt;
+Changing colors &lt;br&gt;
+Using color picker &lt;br&gt;
+Choosing color palettes (online)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;4-adding-and-formatting-text-15-minutes--1030am-1045am&#34;&gt;4: Adding and formatting text (15 minutes) – 10:30am-10:45am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Formatting text &lt;br&gt;
+Paragraph formatting &lt;br&gt;
+Using paragraph and character styles &lt;br&gt;
+Editing styles &lt;br&gt;
+Putting text on a path &lt;br&gt;
+Warping text &lt;br&gt;
+Putting text in a shape &lt;br&gt;
+Creating outlines &lt;br&gt;
+Checking spelling &lt;br&gt;
+Using Find and Replace&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;5-the-layout-5-minutes--1045am-1050am&#34;&gt;5: The Layout (5 minutes) – 10:45am-10:50am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Aligning and Grouping &lt;br&gt;
+Arrange (Front back)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;break-10-minutes&#34;&gt;BREAK (10 minutes)&lt;/h4&gt;
+&lt;h4 id=&#34;6-importing-different-kind-of-data-10-minutes--1100am-1110am&#34;&gt;6: Importing different kind of data (10 minutes) – 11:00am-11:10am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Deconstruction of given AI file&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;exercise-30-minutes--1110am-1140am&#34;&gt;Exercise (30 minutes) – 11:10am-11:40am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Build a poster with our files (Dropbox)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;7-saving-10-minutes--1140am-1150am&#34;&gt;7: Saving (10 minutes) – 11:40am-11:50am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Saving &lt;br&gt;
+Exporting &lt;br&gt;
+Linking files&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;session-2-advanced&#34;&gt;Session 2: Advanced&lt;/h3&gt;
+&lt;p&gt;&lt;i&gt;&lt;ul&gt;&lt;li&gt;How to design a figure (for posters, presentations, publications).&lt;/li&gt;&lt;/p&gt;
+&lt;li&gt;Pre-requisites: Adobe Illustrator installed on laptop; Basic knowledge of the topics covered in Session I; Mouse preferred&lt;/li&gt;
+&lt;/ul&gt;&lt;/i&gt;
+&lt;h4 id=&#34;1-using-drawing-tools&#34;&gt;1: Using drawing tools&lt;/h4&gt;
+&lt;h4 id=&#34;1a-using-the-line-and-pencil-tools-10-minutes--1000am-1010am&#34;&gt;1a: Using the Line and Pencil tools (10 minutes) – 10:00am-10:10am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Working with Image Trace &lt;br&gt;
+Using the pencil tool &lt;br&gt;
+Using the smooth tool&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;1b-understanding-the-pen-tool-15-minutes--1000am-1015am&#34;&gt;1b: Understanding the Pen tool (15 minutes) – 10:00am-10:15am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Straight, curved and hinged lines &lt;br&gt;
+Editing existing paths &lt;br&gt;
+Adding and removing points &lt;br&gt;
+Cutting and joining paths &lt;br&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;1c-creating-a-brush-5-minutes--1015am-1020am&#34;&gt;1c: Creating a brush (5 minutes) – 10:15am-10:20am&lt;/h4&gt;
+&lt;h4 id=&#34;exercise-trace-something-lbrackreceptor-brain-etcrbrack-15-minutes--end-at-1035am&#34;&gt;Exercise: Trace something [receptor, brain, etc.] (15 minutes) – End at 10:35am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Locking layers &lt;br&gt;
+Adding transparency&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;2-additional-color-options-15-minutes--1035am-1050am&#34;&gt;2: Additional color options (15 minutes) – 10:35am-10:50am&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Adding a gradients &lt;br&gt;
+Using the Gradient panel &lt;br&gt;
+(Mesh tool)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;break-10-minutes--1050am-1100am&#34;&gt;BREAK (10 minutes) – 10:50am-11:00am&lt;/h4&gt;
+&lt;h4 id=&#34;exercise&#34;&gt;Exercise:&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Examples from science &lt;br&gt;
+Exercise: discuss how to re-make an image in groups&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;useful-resources&#34;&gt;Useful resources&lt;/h2&gt;
+&lt;h3 id=&#34;libraries-of-graphics&#34;&gt;Libraries of graphics:&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://reactome.org/icon-lib&#34;&gt;https://reactome.org/icon-lib&lt;/a&gt; &lt;br&gt;
+&lt;a href=&#34;https://www.flaticon.com&#34;&gt;https://www.flaticon.com&lt;/a&gt; &lt;br&gt;
+&lt;a href=&#34;http://ian.umces.edu/imagelibrary/index-42.html&#34;&gt;http://ian.umces.edu/imagelibrary/index-42.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;color-palette-resources&#34;&gt;Color palette resources:&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://paletton.com&#34;&gt;http://paletton.com&lt;/a&gt; &lt;br&gt;
+&lt;a href=&#34;https://color.adobe.com/&#34;&gt;https://color.adobe.com/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;visual-review-of-color-theory-in-design&#34;&gt;Visual review of color theory in design:&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.websiteplanet.com/blog/color-matters-reasons-color-choose-logo-important/&#34;&gt;https://www.websiteplanet.com/blog/color-matters-reasons-color-choose-logo-important/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;suggested-font-sizes-for-academic-posters&#34;&gt;Suggested font sizes for academic posters:&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Title (top, centered): 85pt (45-130pt range) &lt;br&gt;
+Author line (second line, centered): 36-44pt font &lt;br&gt;
+Body text: 24-34pt font&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;BR&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Structural biology on Jonathan Ipsaro</title>
+    <link>https://jonipsaro.github.io/tags/structural-biology/</link>
+    <description>Recent content in Structural biology on Jonathan Ipsaro</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jonathan Ipsaro {year}</copyright>
+    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://jonipsaro.github.io/tags/structural-biology/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How do we see the invisible?</title>
+      <link>https://jonipsaro.github.io/post/invisible/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/post/invisible/</guid>
+      <description>&lt;h2 id=&#34;public-presentation-molecular-photography&#34;&gt;Public Presentation: Molecular Photography&lt;/h2&gt;
+&lt;p&gt;Every other year, Cold Spring Harbor Laboratory hosts a full-day Open House.  The event welcomes our Long Island community (and others!) for a full day of campus tours, demonstrations, and short science talks.  I was fortunate to be selected to highlight the motivations, methods, and magic of structural biology which allows us to peer into the invisible world of molecules.&lt;/p&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/7yxt4QS0J7U&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>

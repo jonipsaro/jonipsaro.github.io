@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TEM on Jonathan Ipsaro</title>
+    <link>https://jonipsaro.github.io/tags/tem/</link>
+    <description>Recent content in TEM on Jonathan Ipsaro</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jonathan Ipsaro {year}</copyright>
+    <lastBuildDate>Fri, 09 Aug 2019 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://jonipsaro.github.io/tags/tem/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Negative Stain EM Imaging with the Talos</title>
+      <link>https://jonipsaro.github.io/post/talos/</link>
+      <pubDate>Fri, 09 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/post/talos/</guid>
+      <description>&lt;h3 id=&#34;overview&#34;&gt;Overview&lt;/h3&gt;
+&lt;p&gt;This protocol is to serve as a basic outline for collecting screening images on the Talos TEM.
+&lt;br&gt;A few important notes:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Scope alignment and maintenance are not included.  This protocol assumes a well-aligned microscope.&lt;/li&gt;
+	&lt;li&gt;Staining protocols have not yet been included.&lt;/li&gt;
+	&lt;li&gt;Advanced settings for collecting data with minimal dosage are not yet included.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;initial-setup&#34;&gt;Initial Setup&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Before beginning, make sure that the column valve is closed.&lt;/li&gt;
+	&lt;li&gt;Set up the cold trap.&lt;br&gt;&lt;i&gt;Note:  The dewar should be checked every 1-2 hours and refilled as needed.&lt;/i&gt;&lt;/li&gt;
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Fill the small nitrogen dewar.&lt;/li&gt;
+			&lt;li&gt;Install the dewar and insert the copper bundle.  Be careful to avoid too much splashing.&lt;/li&gt;
+			&lt;li&gt;Cover the dewar with its foam cap.&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;li&gt;Turn on the filament. This takes ~10 minutes to warm up.  &lt;code&gt;Setup &gt;&gt; Filament&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Turn on the Turbo pump.  Wait until this finishes to proceed.  &lt;code&gt;Setup &gt;&gt; Turbo&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Make sure the cryobox (decontaminatior) is inserted.  &lt;code&gt;Vacuum &gt;&gt; [popout] &gt;&gt; Cryobox&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;sample-insertion&#34;&gt;Sample Insertion&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Make sure the column valves are closed.&lt;/li&gt;
+	&lt;li&gt;Remove the sample holder wand.
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Pull the wand out until it stops.&lt;/li&gt;
+			&lt;li&gt;Rotate the wand clockwise so that the pin (originally at 12 o&#39;clock) is at 5 o&#39;clock.&lt;/li&gt;
+			&lt;li&gt;Pull the wand out fully and place it in the holding station.&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Recover any currently-loaded grid and place the new grid in the holder.&lt;/li&gt;
+	&lt;li&gt;Insert the sample holder wand
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Insert the wand such that the pin is approximately at 2 o&#39;clock.&lt;/li&gt;
+			&lt;li&gt;Rotate the wand clockwise smartly until it is at the 5 o&#39;clock position.&lt;/li&gt;
+			&lt;li&gt;Immediately push the wand in approximately 1/4 inch until it stops.&lt;/li&gt;
+			&lt;li&gt;Wait for the air lock protocol to complete (this is automatic, check the &lt;code&gt;Setup &gt;&gt; Vacuum&lt;/code&gt; menu for the countdown).&lt;/li&gt;
+			&lt;li&gt;Rotate the wand such that the pin will be at the 12 o&#39;clock positon.&lt;/li&gt;
+			&lt;li&gt;Allow the vacuum to pull the wand into the instrument.  Provide gentle resistance to control the rate of insertion.&lt;/li&gt;
+			&lt;li&gt;Tap Tap (for good luck 🍀)&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Wait until the vacuum has recovered.  This should only take a couple of moments.&lt;/li&gt;
+	&lt;li&gt;Confirm the specimen holder type (&lt;code&gt;Single Tilt&lt;/code&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;sample-screening&#34;&gt;Sample Screening&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Open the column valve.  &lt;code&gt;Setup &gt;&gt; (Col. Valve Closed)&lt;/code&gt;.&lt;br&gt;
+	Note:  The Turbo will automatically turn off when you open the column valve.&lt;/li&gt;
+	&lt;li&gt;Make sure that the user interface is set to Search mode.  &lt;code&gt;Low Dose &gt;&gt; Search&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Make sure that the screen is inserted.  &lt;code&gt;Flucam Viewer Window &gt;&gt; Insert Screen&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Use the control panel &lt;code style=&#39;color:royalblue;background-color:#F6F6FF&#39;&gt;joystick&lt;/code&gt; to inspect the grid while at low magnification (~500x).  The beam spread and position can be adjusted using the Intensity and Track Ball controls on the control panel, respectively.&lt;/li&gt;
+	&lt;li&gt;Use the control panel interface to set the &lt;code style=&#39;color:royalblue;background-color:#F6F6FF&#39;&gt;Magnification&lt;/code&gt; to SA 2600x.&lt;/li&gt;
+	&lt;li&gt;Set the eucentric height.
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Check the eucentric height by alternating the tilt angle (alpha) from 0 to 20 degrees.  &lt;code&gt;Search &gt;&gt; [popout menu] &gt;&gt; Set Alpha&lt;/code&gt;.&lt;/li&gt;
+			&lt;li&gt;Adjust as needed using the &lt;code style=&#39;color:royalblue;background-color:#F6F6FF&#39;&gt;Z-axis adjustment buttons&lt;/code&gt; on the control panel.  The goal is for the center of the viewfinder to remain on the same spot when alternating between the tilt angles.&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;li&gt;Zoom in as needed (&lt;code style=&#39;color:royalblue;background-color:#F6F6FF&#39;&gt;Magnification&lt;/code&gt; on the control panel) and inspect for good regions of the grid.
+	&lt;li&gt;Find focus by using the TEM Imaging and Analysis window.  &lt;code&gt;Low Dose &gt;&gt; Focus&lt;/code&gt;.&lt;/li&gt;
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Retract the screen (&lt;code&gt;Flucam Viewer Window &gt;&gt; (Insert Screen)&lt;/code&gt;).&lt;/li&gt;
+			&lt;li&gt;Activate the CCD/TV Camera.  &lt;code&gt;Low Dose &gt;&gt; CCD/TV Camera &gt;&gt; [popout] &gt;&gt; Mode &gt;&gt; Continuous&lt;/code&gt;.&lt;/li&gt;
+			&lt;li&gt;Turn on the FFT window.  &lt;code&gt;FFT/IFFT &gt;&gt; FFT&lt;/code&gt;.&lt;/li&gt;
+			&lt;li&gt;Find focus using the &lt;code style=&#39;color:royalblue;background-color:#F6F6FF&#39;&gt;Focus&lt;/code&gt; knob until the presence of zeros in the FFT is at a minimum.&lt;/li&gt;
+			&lt;li&gt;Reset the defocus using the &lt;code style=&#39;color:royalblue;background-color:#F6F6FF&#39;&gt;control panel shortcut (usually R2)&lt;/code&gt;.&lt;/li&gt;
+			&lt;li&gt;Adjust to ~1 um defocus (-1.00 um) using the &lt;code style=&#39;color:royalblue;background-color:#F6F6FF&#39;&gt;Focus&lt;/code&gt; knob.&lt;/li&gt;
+			&lt;li&gt;Change the CCD Mode to Single.  &lt;code&gt;Low Dose &gt;&gt; CCD/TV Camera &gt;&gt; [popout] &gt;&gt; Mode &gt;&gt; Single&lt;/code&gt;.&lt;/li&gt;
+			&lt;li&gt;Save the image by right-clicking and specifying the file name/path&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;li&gt;Low dosage tab default settings:
+		&lt;table&gt;
+			&lt;tr&gt;&lt;th&gt;Mode&lt;/th&gt;		&lt;th&gt;Zoom&lt;/th&gt;		&lt;th&gt;Spot Size&lt;/th&gt;	&lt;th&gt;Intensity&lt;/th&gt;		&lt;th&gt;Other&lt;/th&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td&gt;Search&lt;/td&gt;		&lt;td&gt;2600x&lt;/td&gt;		&lt;td&gt;6&lt;/td&gt;			&lt;td&gt;80&lt;/td&gt;				&lt;td&gt;x: 0.0 um; y: 0.0 um&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td&gt;Focus&lt;/td&gt;		&lt;td&gt;150000x&lt;/td&gt;	&lt;td&gt;6&lt;/td&gt;			&lt;td&gt;40&lt;/td&gt;				&lt;td&gt;1.6 um; 90&amp;deg;&lt;/td&gt;&lt;/tr&gt;
+			&lt;tr&gt;&lt;td&gt;Exposure&lt;/td&gt;	&lt;td&gt;150000x&lt;/td&gt;	&lt;td&gt;6&lt;/td&gt;			&lt;td&gt;40&lt;/td&gt;				&lt;td&gt;1.0 seconds&lt;/td&gt;&lt;/tr&gt;
+		&lt;/table&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Continue this process around the grid.  Eucentric height should be re-determined for each grid square, but only defocus needs to be re-determined for spots within a grid square.&lt;/li&gt;
+	&lt;li&gt;When finished with a grid, reset all settings.
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Reset the magnification.  &lt;code&gt;Low Dose &gt;&gt; Search&lt;/code&gt;.&lt;/li&gt;
+			&lt;li&gt;Reset the holder position.  &lt;code&gt;Search &gt;&gt; Reset Holder&lt;/code&gt;.&lt;/li&gt;
+			&lt;li&gt;Remove the screen.  &lt;code&gt;Flucam Viewer &gt;&gt; (Insert Screen)&lt;/code&gt;.&lt;/li&gt;
+			&lt;li&gt;Close the column valve.  &lt;code&gt;Setup &gt;&gt; Col. Valve Closed&lt;/code&gt;.&lt;/li&gt;
+			&lt;li&gt;If more grids are to be screened, activate the Turbo pump.  &lt;code&gt;Setup &gt;&gt; Turbo pump&lt;/code&gt;.&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;li&gt;Repeat the Sample Insertion and Sample Screening steps for each grid.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;shutdown&#34;&gt;Shutdown&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Make sure the column valves are closed, the grid holder position is reset, and that the screen is out.&lt;/li&gt;
+	&lt;li&gt;If desired, remove the current grid using the &lt;i&gt;Sample Insertion&lt;/i&gt; protocol above.  Replace the sample holder wand once the Turbo pump vaccum is restored.&lt;/li&gt;
+	&lt;li&gt;Turn off the Filament.  &lt;code&gt;Setup &gt;&gt; Filament&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Turn off the Turbo pump.  &lt;code&gt;Setup &gt;&gt; Turbo&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Remove the nitrogen dewar.&lt;/li&gt;
+	&lt;li&gt;Start the cryocycle.  &lt;code&gt;Cryo &gt;&gt; Vacuum &gt;&gt; [popout] &gt;&gt; Cryo &gt;&gt; Cryocycle&lt;/code&gt;.&lt;br&gt;
+		Note:  This will start the Turbo pump.  Some vacuum may be lost.  This is ok.
+	&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

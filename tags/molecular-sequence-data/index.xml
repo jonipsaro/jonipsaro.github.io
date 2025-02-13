@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Molecular Sequence Data on Jonathan Ipsaro</title>
+    <link>https://jonipsaro.github.io/tags/molecular-sequence-data/</link>
+    <description>Recent content in Molecular Sequence Data on Jonathan Ipsaro</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jonathan Ipsaro {year}</copyright>
+    <lastBuildDate>Fri, 06 Apr 2012 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://jonipsaro.github.io/tags/molecular-sequence-data/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Structurally similar but functionally diverse ZU5 domains in human erythrocyte ankyrin</title>
+      <link>https://jonipsaro.github.io/publication/yasunaga-structurally-2012/</link>
+      <pubDate>Fri, 06 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/yasunaga-structurally-2012/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Structures of the spectrin-ankyrin interaction binding domains</title>
+      <link>https://jonipsaro.github.io/publication/ipsaro-structures-2009/</link>
+      <pubDate>Thu, 28 May 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/ipsaro-structures-2009/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

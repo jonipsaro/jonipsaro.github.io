@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cryo-EM on Jonathan Ipsaro</title>
+    <link>https://jonipsaro.github.io/tags/cryo-em/</link>
+    <description>Recent content in Cryo-EM on Jonathan Ipsaro</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jonathan Ipsaro {year}</copyright>
+    <lastBuildDate>Thu, 24 Aug 2023 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://jonipsaro.github.io/tags/cryo-em/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Chromatin remodeling of histone H3 variants by DDM1 underlies epigenetic inheritance of DNA methylation</title>
+      <link>https://jonipsaro.github.io/publication/lee-ddm1-2023/</link>
+      <pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/lee-ddm1-2023/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cryo-EM Data Acquisition with a K3 detector and EPU (CDS Mode)</title>
+      <link>https://jonipsaro.github.io/post/krios_acquire_k3/</link>
+      <pubDate>Fri, 27 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/post/krios_acquire_k3/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Setting up data collection can be divided into these main steps:&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;GIF Tuning&lt;/li&gt;
+	&lt;li&gt;Non-CDS Gain Reference Collection&lt;/li&gt;
+	&lt;li&gt;Image Shift Calibration&lt;/li&gt;
+	&lt;li&gt;Atlas Generation&lt;/li&gt;
+	&lt;li&gt;Set Up the EPU Session&lt;/li&gt;
+	&lt;li&gt;CDS Gain Reference Collection&lt;/li&gt;
+	&lt;li&gt;Manual ZLP Centering&lt;/li&gt;
+	&lt;li&gt;Perform Direct Alignments&lt;/li&gt;
+	&lt;li&gt;Final Touches&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr style=&#39;margin:35px 0&#39;&gt;
+&lt;h2 id=&#34;step-1---tune-the-gif-optional&#34;&gt;Step 1 - Tune the GIF (optional)&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Using the microscope computer, set the &lt;code&gt;Condenser Aperture&lt;/code&gt; to 150.&lt;/li&gt;
+	&lt;li&gt;If needed, the position of the slit can be moved manually. To do so, activate the camera &lt;code&gt;View&lt;/code&gt;, click on the Gatan Filter Control Window (&lt;code&gt;Gatan &gt;&gt; Windows &gt;&gt; Filter Control&lt;/code&gt;), and use the keyboard arrow keys to adjust.&lt;/li&gt;
+	&lt;li&gt;&lt;code&gt;Stop View&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Set the spot size to 2 using the microscope control pad.&lt;/li&gt;
+	&lt;li&gt;Insert the screen, center the beam using the track ball, and adjust the beam size and intesity to be approximately 1.5 times the size of the green circle. Retract the screen when finished.&lt;/li&gt;
+	&lt;li&gt;The tuning needs to be performed in both linear and counted modes. Begin with the Gatan set to &lt;code&gt;linear&lt;/code&gt;.
+	&lt;li&gt;On the Gatan computer &lt;code&gt;Tune GIF &gt;&gt; Quick Tune&lt;/code&gt;. This will also center the ZLP.&lt;/li&gt;
+	&lt;li&gt;When the GIF tuning is complete, an assement image will pop up on the Gatan computer. It should look fairly flat with muddy colors. If the GIF tuning fails completely or if the image is very colorful, it may be due to a beam intensity that is is too low. Reinsert the screen, increase the intensity, and try again.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr style=&#39;margin:35px 0&#39;&gt;
+&lt;h2 id=&#34;step-2---non-cds-gain-reference-collection-optional&#34;&gt;Step 2 - Non-CDS Gain Reference Collection (optional)&lt;/h2&gt;
+&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;B&gt;CRITICAL:&lt;/B&gt;  For Gain Reference Collection, Data Acquisition parameters must already be set and the ZLP should be centered. ZLP centering is performed as part of the GIF tuning protocol, so the ZLP is likely already centered.&lt;BR&gt;&lt;BR&gt;Also note that during the automatic ZLP centering, the Gatan camera is taken out of CDS mode (if it was previously in CDS mode). For the initial gain references, you DO NOT want to be in CDS mode.&lt;/div&gt;
+&lt;p style=&#39;margin-bottom:15px&#39;&gt;&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Navigate to an empty grid square.&lt;/li&gt;
+	&lt;li&gt;Check that the acquisiton parameters in EPU are reasonable. &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; Preview&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;On the microscope computer, set the &lt;code&gt;Aperture&lt;/code&gt; to 150.&lt;/li&gt;
+	&lt;li&gt;Using the microscope control panel, set the spot size to 2.&lt;/li&gt;
+	&lt;li&gt;On the microscope computer, insert the screen and check for fringes. If fringes are present, adjust the beam intensity using the control panel knobs and the beam position using the track ball.&lt;/li&gt;
+	&lt;li&gt;Gain references will need to be collected in both counted and linear modes. Adjust the Gatan camera settings to be &lt;code&gt;Low Dose&lt;/code&gt;, &lt;code&gt;Counted&lt;/code&gt;, &lt;code&gt;0.5x&lt;/code&gt;. Note:  If the camera is set to &lt;code&gt;Counted&lt;/code&gt; then the gain reference acquisition will automatically advance from counted to linear mode. If the camera is set to &lt;code&gt;Linear&lt;/code&gt;, only the linear gain references will be collected. That is not what you want.&lt;/li&gt;
+	&lt;li&gt;Prepare gain references on the Gatan Computer. &lt;code&gt;Camera &gt;&gt;  Prepare Gain Reference&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Follow the instructions when prompted by the Gatan Computer. You will need to adjust the beam intensity. Use the numbers on the Gatan display and adjust to the required value.&lt;/li&gt;
+	&lt;li&gt;Manually check the beam centering by inserting the screen. If needed (i.e. the beam center is very far off), adjust the beam center postion by selecting &lt;code&gt;Direct Alignments &gt;&gt; Beamshift Center&lt;/code&gt; on the microscope computer and adjusting the beam position with multifunction X and multifunction Y on the control pad. Center on the green circle. Retract the screen.&lt;/li&gt;
+	&lt;li&gt;After the first set (linear) of gain references have been collected, make sure to re-set the &lt;code&gt;Data Acquisition&lt;/code&gt; settings display for EPU. Click &lt;code&gt;Set&lt;/code&gt;. Note:  The spot size should change back to 5 and the objective aperture should automatically change to 100 um if it was not already at 100 um and the C2 aperture should return to 70.&lt;/li&gt;
+	&lt;li&gt;After the linear gain references have been collected, the counted mode gain reference collection window will appear. Check &lt;code&gt;Expert Mode&lt;/code&gt; and make sure the &lt;code&gt;Dose Rate&lt;/code&gt; is set to 10.0 and the &lt;code&gt;Gain Ref Electron&lt;/code&gt; is at 3000. Click &lt;code&gt;OK&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Follow the instructions when prompted by the Gatan Computer (similar to before). You will need to adjust the beam intensity. Use the numbers on the Gatan display and adjust to the required value.&lt;/li&gt;
+	&lt;li&gt;When the gain reference is completed, open the Gatan camera. &lt;code&gt;View&lt;/code&gt;.
+	&lt;li&gt;Set the view to &lt;code&gt;1x&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Also activate the FFT window.&lt;/li&gt;
+	&lt;li&gt;Both the main window and the FFT should be decently flat however with the latest acquisition setups the gain reference is not applied. Any imperfections in the image should be reflected by a similar pattern in the gain reference.&lt;/li&gt;
+	&lt;li&gt;Set the &lt;code&gt;Data Acquisition&lt;/code&gt; parameters by clicking &lt;code&gt;Set&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr style=&#39;margin:35px 0&#39;&gt;
+&lt;h2 id=&#34;step-3---image-shift-calibration&#34;&gt;Step 3 - Image Shift Calibration&lt;/h2&gt;
+&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;B&gt;CRITICAL:&lt;/B&gt;  For the Image Shift Calibration, it is obligatory that all Preparation modes (Atlas at 175x, Grid Square, Hole/Eucentric Height, Data Acquisition/Auto Focus) are already set.&lt;/div&gt;
+&lt;h3 id=&#34;part-1---grid-square-selection&#34;&gt;Part 1 - Grid Square Selection&lt;/h3&gt;
+&lt;div style=&#39;background:lemonchiffon; color:goldenrod&#39;&gt;Note:  This square will take a fair amount of radiation damage, so it is important that it is not a square that you plan to use for data acqusition. A square that has a few empty holes and some interestingly-shaped contamination is ideal.&lt;/div&gt;
+&lt;h3 id=&#34;part-2---locate-and-navigate-to-a-landmark&#34;&gt;Part 2 - Locate and Navigate to a Landmark&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Navigate to &lt;code&gt;Preparation &gt;&gt; Atlas&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Select a grid square that has an obvious landmark. Usually a piece of contaimination with a distinctive shape is desirable. If collecting on Lacey carbon grids, contamination near to an interesting carbon pattern is even better. Move the stage to that grid square and landmark. &lt;code&gt;(Right click) Move stage here&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Check the grid square. &lt;code&gt;Preparation &gt;&gt; Grid Square &gt;&gt; Preview&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Determine the eucentric height  &lt;code&gt;Auto Functions &gt;&gt; Hole/Eucentric Height &gt;&gt; Auto-eucentric by beam tilt.&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Set the microscope parameters to match the Data Acqusition settings. &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; Set&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Sequentially center the stage position on the landmark at each magnification setting, ending with &lt;code&gt;Data Acquisition&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-3---perform-image-shift-calibration&#34;&gt;Part 3 - Perform Image Shift Calibration&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Select &lt;code&gt;Preparation &gt;&gt; Tasks &gt;&gt; Calibrate Image Shifts &gt;&gt; Start Calibration&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;The Image Shift Calibration module will walk through the calibration. To continue, click &lt;code&gt;Proceed&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;When a new setting is applied and an image is generated, adjust the calibration center by double-clicking on the corresponding spot on the right image panel. It is advisable to re-acquire this image before moving on. When satisfied, click &lt;code&gt;Proceeed&lt;/code&gt;. This will walk through each magnification setting, beginning from &lt;code&gt;Data Acquisition&lt;/code&gt; and continuing through to &lt;code&gt;Atlas&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr style=&#39;margin:35px 0&#39;&gt;
+&lt;h2 id=&#34;step-4---generate-the-atlas&#34;&gt;Step 4 - Generate the Atlas&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Select &lt;code&gt;Atlas &gt;&gt; Session Setup&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Enter a path for the data (the folder will be created automatically). Images should be saved as &lt;code&gt;MRC&lt;/code&gt; format.&lt;/li&gt;
+	&lt;li&gt;Double-check the Atlas acquisition parameters &lt;code&gt;Preparation &gt; Atlas&lt;/code&gt;. For screening, a magnification 135x of is used to increase speed. For data collection atlases, a magnification of 175x is preferred.&lt;/li&gt;
+	&lt;li&gt;Select the grid to be atlased.&lt;/li&gt;
+	&lt;li&gt;Ensure that the objective aperture it out.&lt;/li&gt;
+	&lt;li&gt;Begin the atlas acquisition by clicking &lt;code&gt;Start&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr style=&#39;margin:35px 0&#39;&gt;
+&lt;h2 id=&#34;step-5---set-up-the-epu-session&#34;&gt;Step 5 - Set up the EPU Session&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Select &lt;code&gt;EPU &gt;&gt; Session Setup&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Enter the setup parameters. Enter a path for the data (the folder will be created automatically). Image format should be saved as &lt;code&gt;MRC&lt;/code&gt; format. The Dose fraction output should be &lt;code&gt;Tiff Lzw Non-gain normalized&lt;/code&gt;.  Make sure that the acqusition type is &lt;code&gt;Manual&lt;/code&gt; and &lt;code&gt;Faster&lt;/code&gt;. Make sure to select the correct grid type and indicate the hole paramters (if applicable).&lt;/li&gt;
+	&lt;li&gt;Still in the EPU window, use the &lt;code&gt;Atlas&lt;/code&gt; tab to select a reasonable grid square.&lt;/li&gt;
+	&lt;li&gt;Determine the eucentric height. Select &lt;code&gt;Preparation &gt;&gt; Hole/Eucentric Height &gt;&gt; Auto Eucentric Height by beam tilt&lt;/code&gt;.  Note: Our microscope has a slight systematic error of about 2.5 um for the typical parameters.  Manually adjust the Z height using the microscope computer &lt;code&gt;Stage &gt;&gt; Set &gt;&gt; Z (subtract 2.5 microns) &gt;&gt; Go To&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;It can be useful to take an image of an empty hole in the grid for subsequent determination of approximate ice thickness. This can be done by centering on the empty hole, then selecting &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; Acquire&lt;/code&gt;. Note the dose (lower right window).&lt;/li&gt;
+	&lt;li&gt;Check the grid square quality. Move to a hole that could be potenially useful for collection. Then collect an image &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; Acquire&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;If the ice thickness is appropriate (usually ~80% of the empty hole dose is desireable), this square can be used for data collection. &lt;code&gt;EPU &gt;&gt; Atlas &gt;&gt; (Right Click on Grid Square) Add Square&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Generate the pattern of images to be collected. &lt;code&gt;EPU &gt;&gt; Hole Selection &gt;&gt; Generate Pattern&lt;/code&gt;. Use the brush too to manually remove i) empty holes/regions, ii) significant contamination, iii) thick ice near the edges of each grid square. Some of this can be automated using the controls in the top and right panels.  Note: If you intend on using the automatic hole selection (recommended), be very stringent in setting the cutoff values in the histogram!&lt;/li&gt;
+	&lt;li&gt;Add the collection and focus parameters. Defocus values that are typically used begin around -2.2 microns and continue to -0.8 microns. To add these, enter the desired defocus value and click on the 📄 icon next to the entry field. It should now be present in the defocus values list above. Valeus can be removed by selecting them and clicking on the 🗑️ icon. Be sure to double check these and ensure that the values are negative!&lt;/li&gt;
+	&lt;li&gt;Set the following parameters for Lacey carbon grids:
+		&lt;ul&gt;
+			&lt;li&gt;Image Shift Delay = 1.5 seconds&lt;/li&gt;
+			&lt;li&gt;Minimum stage settling time = 12 seconds&lt;/li&gt;
+			&lt;li&gt;Recurrance = After Distance = 10 microns&lt;/li&gt;
+			&lt;li&gt;Focus using = Objective lens&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Alternatively, set the following parameters for Quantifoil grids:
+		&lt;ul&gt;
+			&lt;li&gt;Delay after Image Shift = 1.5 seconds&lt;/li&gt;
+			&lt;li&gt;Delay after Stage Shift = 1 second&lt;/li&gt;
+			&lt;li&gt;Recurrance = After Distance = 10 um&lt;/li&gt;
+			&lt;li&gt;Focus = Objective lens&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li&gt;If collecting from Lacey grids, use the &lt;code&gt;EPU &gt;&gt; Generate Template&lt;/code&gt; to tile the grid square. Use a spacing of 1.2 um.&lt;/li&gt;
+	&lt;li&gt;If collecting from Quantifoil grids, beam shift collection can dramatically speed up acquisiton. Use the &lt;code&gt;EPU &gt;&gt; Generate Template&lt;/code&gt; to set this up. Be sure to include one shot for Autofocus. If you are unsure how to make an appropriate template, ask the Facility Manager.&lt;/li&gt;
+	&lt;li&gt;Return to the &lt;code&gt;EPU &gt;&gt; Atlas&lt;/code&gt; view. The grid square should now display the eucentric height determined earlier and the number of images to be collected should be indicated in the right-most panel.&lt;/li&gt;
+	&lt;li&gt;Option 1 - Automatic (preferred):  Return to the Atlas view (&lt;code&gt;EPU &gt;&gt; Preparation &gt;&gt; Square Selection&lt;/code&gt;) select more squares that look good for acquisition.  Once finished, go to &lt;code&gt;EPU &gt;&gt; Preparation &gt;&gt; Hole Selection &gt;&gt; Prepare All Squares&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Option 2 - Manual:  Repeat this process beginning at item 3. It is not necessary to re-enter the collection  (item 9) as these should be preserved from earlier, but remember to update the Z-height after determining the eucentric height for each square.  Continue adding more grid squares until there are enough for the desired collection time.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr style=&#39;margin:35px 0&#39;&gt;
+&lt;h2 id=&#34;step-6---manual-centering-of-the-zlp-optional&#34;&gt;Step 6 - Manual Centering of the ZLP (optional)&lt;/h2&gt;
+&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;B&gt;IMPORTANT:&lt;/B&gt;  Centering the ZLP will disable CDS mode without notification. If centering the ZLP, make sure to double-check that CDS mode is enabled afterward.&lt;/div&gt;
+&lt;p style=&#39;margin-bottom:15px&#39;&gt;&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Make sure the &lt;code&gt;Data Acquisition&lt;/code&gt; parameters are set and active.&lt;/li&gt;
+	&lt;li&gt;Adjust the Gatan camera settings to be &lt;code&gt;Low Dose&lt;/code&gt;, &lt;code&gt;Linear&lt;/code&gt;, &lt;code&gt;1x&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Make sure the camera is active by clicking &lt;code&gt;View&lt;/code&gt;. 
+	&lt;li&gt;On the Gatan computer open the &lt;code&gt;Filter Control&lt;/code&gt; window.&lt;/li&gt;
+	&lt;li&gt;Click on the text field &lt;code&gt;Filter Control &gt;&gt; Main &gt;&gt; Adjust &gt;&gt; X.X eV&lt;/code&gt;. Using the arrow keys (up and down), adjust the ZLP position. Make sure to count how many times you click in a given direction.&lt;/li&gt;
+	&lt;li&gt;Move in the up direction. You should eventually find the edge of the ZLP as the camera image will have aberrations. This is usually 10-14 clicks.&lt;/li&gt;
+	&lt;li&gt;Now navigate using the down arrow key back into the slit and to the bottom edge (while counting).&lt;/li&gt;
+	&lt;li&gt;Navigate back up into the slit to make up half of the distance. Example:  If it took 24 clicks from the &#39;top&#39; edge of the slit to the &#39;bottom&#39; edge of the slit, navigate back 12 times to center the slit.&lt;/li&gt;
+	&lt;li&gt;Click the &lt;code&gt;O&lt;/code&gt; button to the left of the adjustment text box to set this current slit position to 0.&lt;/li&gt;
+	&lt;li style=&#39;background:pink; color:darkred&#39;&gt;CRITICAL: Make sure to put the camera back in &lt;code&gt;Counted&lt;/code&gt;, &lt;code&gt;0.5&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr style=&#39;margin:35px 0&#39;&gt;
+&lt;h2 id=&#34;step-7---cds-mode-gain-reference-collection&#34;&gt;Step 7 - CDS Mode Gain Reference Collection&lt;/h2&gt;
+&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;B&gt;CRITICAL:&lt;/B&gt;  For Gain Reference Collection, Data Acquisition parameters must already be set and the ZLP should be centered. &lt;BR&gt;This time, do NOT center the ZLP using the automatic ZLP centering function on the Gatan computer. Doing so will cause the camera to come out of CDS mode. If you accidentally center the ZLP this way, make sure to reactivate CDS mode as described above.&lt;/div&gt;
+&lt;p style=&#39;margin-bottom:15px&#39;&gt;&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Make sure the Gatan is set to CDS mode &lt;code&gt;Technique Manager &gt;&gt; Low Dose &gt;&gt; EF-CCD Camera &gt;&gt; Gear Icon (to the right of &#34;View&#34;).&lt;/code&gt;  Make sure to set &lt;code&gt;Corrections: Unprocessed&lt;/code&gt;, &lt;code&gt;Correct defects: Checked&lt;/code&gt;, &lt;code&gt;CDS Mode: Checked&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Navigate to an empty grid square.&lt;/li&gt;
+	&lt;li&gt;Check that the acquisiton parameters in EPU are reasonable. &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; Preview&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;On the microscope computer, set the &lt;code&gt;Condenser Aperture&lt;/code&gt; to 150.  Just select &lt;code&gt;150&lt;/code&gt;.  Do NOT click adjust.&lt;/li&gt;
+	&lt;li&gt;Using the microscope control panel, set the spot size to 2.&lt;/li&gt;
+	&lt;li&gt;On the microscope computer, insert the screen and check for fringes. If fringes are present, adjust the beam intensity using the control panel knobs and the beam position using the track ball.&lt;/li&gt;
+	&lt;li&gt;Gain references will need to be collected in both counted and linear modes. Adjust the Gatan camera settings to be &lt;code&gt;Low Dose&lt;/code&gt;, &lt;code&gt;Counted&lt;/code&gt;, &lt;code&gt;0.5x&lt;/code&gt;. Note:  If the camera is set to &lt;code&gt;Counted&lt;/code&gt; then the gain reference acquisition will automatically advance from counted to linear mode. If the camera is set to &lt;code&gt;Linear&lt;/code&gt;, only the linear gain references will be collected. That is not what you want.&lt;/li&gt;
+	&lt;li&gt;Prepare gain references on the Gatan Computer. &lt;code&gt;Camera &gt;&gt;  Prepare Gain Reference&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Follow the instructions when prompted by the Gatan Computer. You will need to adjust the beam intensity. Use the numbers on the Gatan display and adjust to the required value.&lt;/li&gt;
+	&lt;li&gt;Manually check the beam centering by inserting the screen. If needed (i.e. the beam center is very far off), adjust the beam center postion by selecting &lt;code&gt;Direct Alignments &gt;&gt; Beamshift Center&lt;/code&gt; on the microscope computer and adjusting the beam position with multifunction X and multifunction Y on the control pad. Center on the green circle. Retract the screen.&lt;/li&gt;
+	&lt;li&gt;After the first set (linear) of gain references have been collected, make sure to re-set the &lt;code&gt;Data Acquisition&lt;/code&gt; settings display for EPU. Click &lt;code&gt;Set&lt;/code&gt;. Note:  The spot size should change back to 5 and the objective aperture should automatically change to 100 um if it was not already at 100 um and the C2 aperture should return to 70.&lt;/li&gt;
+	&lt;li&gt;After the linear gain references have been collected, the counted mode gain reference collection window will appear. Check &lt;code&gt;Expert Mode&lt;/code&gt; and make sure the &lt;code&gt;Dose Rate&lt;/code&gt; is set to 10.0 and the &lt;code&gt;Gain Ref Electron&lt;/code&gt; is at 3000. Click &lt;code&gt;OK&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Follow the instructions when prompted by the Gatan Computer (similar to before). You will need to adjust the beam intensity. Use the numbers on the Gatan display and adjust to the required value.&lt;/li&gt;
+	&lt;li&gt;Set the &lt;code&gt;Data Acquisition&lt;/code&gt; parameters by clicking &lt;code&gt;Set&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;When the gain reference is completed, open the Gatan camera. Set the view to &lt;code&gt;1x&lt;/code&gt; and click &lt;code&gt;View&lt;/code&gt;.
+	&lt;li&gt;Also activate the FFT window.&lt;/li&gt;
+	&lt;li&gt;Both the main window and the FFT should be decently flat however with the latest acquisition setups the gain reference is not applied. Any imperfections in the image should be reflected by a similar pattern in the gain reference. When statisfied &lt;code&gt;Stop View&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Bin and export the CDS gain reference. Navigate to &lt;code&gt;C:/ProgramData/Gatan/ReferenceImages/&lt;/code&gt;. There should be two sets of gain references. One set for non-CDS (i.e. &#39;normal&#39;) mode that are rather stable. The other set are for CDS mode and include the ones you just collected. Open the image, then rebin it. &lt;code&gt;Process &gt;&gt; Re-bin by Two &gt;&gt; Save As...&lt;/code&gt;. Make sure NOT to overwrite the original. Change the name following the convention CDSbinnedgainrefMMDDYY.mrc. Save it in the DoseFractions folder.&lt;/li&gt;
+	&lt;li&gt;Set the &lt;code&gt;Data Acquisition&lt;/code&gt; parameters by clicking &lt;code&gt;Set&lt;/code&gt;.&lt;/li&gt;&lt;li&gt;Activate the Gatan camera (&lt;code&gt;View&lt;/code&gt;), check that the empty image quality is reasonable (although keep in mind that it is not gain corrected), and record the empty dose. This should be something around 14 electrons/pixel/second.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr style=&#39;margin:35px 0&#39;&gt;
+&lt;h2 id=&#34;step-8---perform-direct-alignments&#34;&gt;Step 8 - Perform Direct Alignments&lt;/h2&gt;
+&lt;h3 id=&#34;part-1---grid-square-selection-1&#34;&gt;Part 1 - Grid Square Selection&lt;/h3&gt;
+&lt;div style=&#39;background:lemonchiffon; color:goldenrod&#39;&gt;Note:  As with the Image Shift Calibration, this square will take a fair amount of radiation damage, so it is important that it is not a square that you plan to use for data acqusition. A square that has a few empty holes and some interestingly-shaped contamination is ideal.&lt;/div&gt;
+&lt;p style=&#39;margin-bottom:15px&#39;&gt;&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Use EPU to navigate to a new grid square. Move to an empty hole for best contrast.&lt;/li&gt;
+	&lt;li&gt;Determine the eucentric height. &lt;code&gt;Auto functions &gt;&gt; Hole Eucentric &gt;&gt; Eucentric Height by Beam Tilt&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Position the beam on the edge of an empty hole. This can be done using the EPU controls or by using the joystick on the control panel if the screen is inserted.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-2---initial-focus-determination&#34;&gt;Part 2 - Initial Focus Determination&lt;/h3&gt;
+&lt;p&gt;Overview:  This part of the protocol will serve to tune the eucentric height and find focus. It will be refined in Part 5.&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Insert the screen&lt;/li&gt;
+	&lt;li&gt;Set the eucentric height manually
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Set the microscope optics to the Data Acquisition setting. &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; SET&lt;/code&gt;&lt;/li&gt;
+			&lt;li&gt;Use the control panel joystick to move to an area where you can see the edge of the hole and some carbon.&lt;/li&gt;
+			&lt;li&gt;Set the alpha angle to +/- 20 degrees. This command can be found on the microscope computer under the Stage menu (lower right corner) in the Control tab. You will need to activate the popout extension from the Stage parameters menu to adjust the alpha angle. The stage should rotate. The goal is to adjust the Z-height of the stage such that changing alpha +/- 20 degrees keeps the center of the image in place. Z-height can be adjusted using the control panel (rightmost buttons).&lt;/li&gt;
+			&lt;li&gt;When adjusting the height, it is likely necessary to toggle between alpha=0 and alpha=20.&lt;/li&gt;
+			&lt;li&gt;When satisfied with the Z-height adjustment, make sure to set alpha back to 0 degrees.&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Use the control panel joystick to move the beam over some carbon.&lt;/li&gt;
+	&lt;li&gt;Find focus using the Gatan computer
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Retract the screen&lt;/li&gt;
+			&lt;li&gt;Check the Gatan camera parameters. The &lt;code&gt;exposure time&lt;/code&gt; should be 1x. The mode should be &lt;code&gt;counted&lt;/code&gt;.
+			&lt;li&gt;Activate the Gatan camera. &lt;code&gt;View&lt;/code&gt;&lt;/li&gt;
+			&lt;li&gt;Using the FFT window, find focus. Use the defocus knob on the control panel and adjust until no Thon rings are apparent.&lt;/li&gt;
+			&lt;li&gt;Reset the defocus to 0 using the control panel.&lt;/li&gt;
+			&lt;li&gt;Deactivate the Gatan camera. &lt;code&gt;Stop View&lt;/code&gt;&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-3---initialize-direct-alignments&#34;&gt;Part 3 - Initialize Direct Alignments&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Insert the screen.&lt;/li&gt;
+	&lt;li&gt;Activate the direct aligments menu (bottom right).&lt;/li&gt;
+	&lt;li&gt;Sequentially adjust the alignments:
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;nP beam tilt ppX (use multifunction X to minimize movement)&lt;/li&gt;
+			&lt;li&gt;nP beam tilt ppY (use multifunction X to minimize movement)&lt;/li&gt;
+			&lt;li&gt;beamshift center (use both knobs; center on the green circle)&lt;/li&gt;
+			&lt;li&gt;rotation center (minimize movement; use both knobs)&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Click &lt;code&gt;Done&lt;/code&gt; when finished.&lt;/li&gt;
+	&lt;li&gt;Retract the screen.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-4---initial-astigmatism-correction-and-coma-free-alignment&#34;&gt;Part 4 - Initial Astigmatism Correction and Coma-Free Alignment&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Open the Sherpa window. If Sherpa is not already running, it can be launched from &lt;code&gt;Microscope Software Launcher &gt;&gt; Tools &gt;&gt; Sherpa&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Use the control panel to dial in approximately -0.9 um defocus (note: this may vary depending on the magnification being used)&lt;/li&gt;
+	&lt;li&gt;Check and/or set the following parameters:&lt;/li&gt;
+		&lt;ul&gt;Type: EF-CCD&lt;/ul&gt;
+		&lt;ul&gt;Exposure time [s]: 2.0&lt;/ul&gt;
+		&lt;ul&gt;Binning: 2&lt;/ul&gt;
+		&lt;ul&gt;Readout area: Full&lt;/ul&gt;
+		&lt;ul&gt;Electron counting: checked&lt;/ul&gt;
+		&lt;ul&gt;Autofocus to [um]: -0.9, checked&lt;/ul&gt;
+	&lt;li&gt;Measure the objective stigmation. &lt;code&gt;Measure&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Correct the objective stigmation. &lt;code&gt;Correct&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-5---focus-determination&#34;&gt;Part 5 - Focus Determination&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Activate the Gatan camera. &lt;code&gt;View&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Determine the correction from Sherpa (the defocus used is in the Sherpa window; the set defocus is listed in the current optics parameters on the microscope computer)&lt;/li&gt;
+	&lt;li&gt;Adjust the current defocus by the amount calculated above. This should get you very close to focus.&lt;/li&gt;
+	&lt;li&gt;Check for focus using the FFT window. It should be quite good. Make fine adjustments if needed using the defocus knob on control panel.&lt;/li&gt;
+	&lt;li&gt;If the defocus setting at focus is more than 0.2 microns from what is expected, &lt;code&gt;Stop View&lt;/code&gt; and return to Part 3 - Initialize Direct Alignments for another try.&lt;/li&gt;
+	&lt;li&gt;Reset the defocus to 0 using the control panel.&lt;/li&gt;
+	&lt;li&gt;Deactivate the Gatan camera. &lt;code&gt;Stop View&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-6---final-astigmatism-correction-and-comafree-alignment&#34;&gt;Part 6 - Final Astigmatism Correction and ComaFree Alignment&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Open the Sherpa window&lt;/li&gt;
+	&lt;li&gt;Use the control panel to dial in approximately -0.9 um defocus (note: this may vary depending on the magnification being used)&lt;/li&gt;
+	&lt;li&gt;Measure the objective stigmation. &lt;code&gt;Measure&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Correct the objective stigmation. &lt;code&gt;Correct&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Correct the coma. &lt;code&gt;Correct&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Measure the objective stigmation. &lt;code&gt;Measure&lt;/code&gt;. Correct if needed.&lt;/li&gt;
+	&lt;li&gt;Cycle between the objective stigmation and coma-free alignment until both are accurate and the errors are small.&lt;/li&gt;
+	&lt;li&gt;The last step should be measurement of the objective stigmation with the astigmatism measuring 1 nm or less.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;div-stylebackgroundpink-colordarkredpart-7---import-settings-to-epu---criticaldiv&#34;&gt;&lt;div style=&#39;background:pink; color:darkred&#39;&gt;Part 7 - Import Settings to EPU - CRITICAL!&lt;/div&gt;&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Set the Data Acquisition optics parameters. &lt;code&gt;EPU &gt;&gt; Preparation &gt;&gt; Data Acquisition &gt;&gt; GET&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Set the Autofocus optics parameters. &lt;code&gt;EPU &gt;&gt; Preparation &gt;&gt; Autofocus &gt;&gt; GET&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Write down or photograph the current Hole Eucentric optics paramters. Once you have written them down, &lt;code&gt;EPU &gt;&gt; Preparation &gt;&gt; Hole Eucentric &gt;&gt; GET&lt;/code&gt;. Then manually repopulate the Hole Eucentric parameters.
+&lt;/ol&gt;
+&lt;hr style=&#39;margin:35px 0&#39;&gt;
+&lt;h2 id=&#34;step-9---final-touches-and-start&#34;&gt;Step 9 - Final Touches and Start&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;B&gt;CRITICAL - Double Check the Following:&lt;/B&gt;
+		&lt;ul&gt;Microscope computer - The stage rotation (alpha) is set to zero. Stage &gt;&gt; Popout &gt;&gt; alpha&lt;/ul&gt;
+		&lt;ul&gt;Microscope computer - The Turbo pump is OFF.&lt;/ul&gt;
+		&lt;ul&gt;Microscope computer - The 100 um objective aperture is inserted.&lt;BR&gt;Note:  If the objective was not inserted, it is necessary to redo the direct alignments.&lt;/ul&gt;
+		&lt;ul&gt;Gatan computer - The camera mode is Counted.&lt;/ul&gt;
+	&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;Start the automated acquisition &lt;code&gt;EPU &gt;&gt; Automated Acquistion &gt;&gt; Start Run!&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Asterix/Gtsf1 links tRNAs and piRNA silencing of retrotransposons</title>
+      <link>https://jonipsaro.github.io/publication/ipsaro-asterix-2021/</link>
+      <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/ipsaro-asterix-2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cryo-EM Data Acquisition with a K2 detector and EPU [Deprecated]</title>
+      <link>https://jonipsaro.github.io/post/krios_acquire_k2/</link>
+      <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/post/krios_acquire_k2/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;Setting up data collection can be divided into these main steps:&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Run Setup - Gain Reference Collection and GIF Tuning&lt;/li&gt;
+	&lt;li&gt;Image Shift Calibration&lt;/li&gt;
+	&lt;li&gt;Atlas Generation&lt;/li&gt;
+	&lt;li&gt;Set Up the EPU Session&lt;/li&gt;
+	&lt;li&gt;Perform Direct Alignments&lt;/li&gt;
+	&lt;li&gt;Final Touches&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;step-0---run-setup&#34;&gt;Step 0 - Run Setup&lt;/h2&gt;
+&lt;h3 id=&#34;part-1---gain-reference-collection&#34;&gt;Part 1 - Gain Reference Collection&lt;/h3&gt;
+&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;B&gt;CRITICAL:&lt;/B&gt;  For Gain Reference Collection, Data Acquisition parameters must already be set.&lt;/div&gt;
+&lt;ol&gt;
+	&lt;li&gt;Navigate to an empty grid square.&lt;/li&gt;
+	&lt;li&gt;Check that the acquisiton parameters in EPU are reasonable.  &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; Preview&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;On the microscope computer, set the &lt;code&gt;Aperture&lt;/code&gt; to 150.&lt;/li&gt;
+	&lt;li&gt;Using the microscope control panel, set the spot size (4 for 200 kV; 3 for 300 kV).&lt;/li&gt;
+	&lt;li&gt;Prepare gain references on the Gatan Computer.  &lt;code&gt;Camera &gt;&gt;  Prepare Gain References&lt;/code&gt;.  Click &lt;code&gt;OK&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;On the microscope computer, lift the screen and check for fringes.  If fringes are present, adjust the beam intensity using the control panel knobs.&lt;/li&gt;
+	&lt;li&gt;Insert the screen.&lt;/li&gt;
+	&lt;li&gt;Follow the instructions when prompted by the Gatan Computer.  You will need to adjust the beam intensity.  Use the numbers on the Gatan display and adjust to the required value.&lt;/li&gt;
+	&lt;li&gt;Additionally, collect a dark reference.  When doing this &lt;code&gt;Close column valves&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;When the gain reference is completed, open the Gatan camera.  &lt;code&gt;View&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Also activate the FFT window.&lt;/li&gt;
+	&lt;li&gt;Both the main window and the FFT should be flat, indicating the gain reference is correct.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-2---tune-the-gif&#34;&gt;Part 2 - Tune the GIF&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;&lt;code&gt;Center ZLP&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;&lt;code&gt;View&lt;/code&gt;.  This should again be flat.&lt;/li&gt;
+	&lt;li&gt;&lt;code&gt;Stop View&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Using the microscope computer, put in the condenser aperture.  If needed, the position of the slit can be moved manually.  To do so, click on the Gatan Filter Control Window (&lt;code&gt;Gatan &gt;&gt; Windows &gt;&gt; Filter Control&lt;/code&gt;) and use the keyboard arrow keys to adjust.&lt;/li&gt;
+	&lt;li&gt;&lt;code&gt;Stop View&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Set the spot size to 5 using the microscope control pad.&lt;/li&gt;
+	&lt;li&gt;On the Gatan computer &lt;code&gt;Tune GIF &gt;&gt; Full&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;step-1---image-shift-calibration&#34;&gt;Step 1 - Image Shift Calibration&lt;/h2&gt;
+&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;B&gt;CRITICAL:&lt;/B&gt;  For the Image Shift Calibration, it is obligatory that all Preparation modes (Atlas, Grid Square, Hole/Eucentric Height, Data Acquisition/Auto Focus) are already set.&lt;/div&gt;
+&lt;h3 id=&#34;part-1---grid-square-selection&#34;&gt;Part 1 - Grid Square Selection&lt;/h3&gt;
+&lt;div style=&#39;background:lemonchiffon; color:goldenrod&#39;&gt;Note:  This square will take a fair amount of radiation damage, so it is important that it is not a square that you plan to use for data acqusition.  A square that has a few empty holes and some interestingly-shaped contamination is ideal.&lt;/div&gt;
+&lt;h3 id=&#34;part-2---locate-and-navigate-to-a-landmark&#34;&gt;Part 2 - Locate and Navigate to a Landmark&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Navigate to &lt;code&gt;Preparation &gt;&gt; Atlas&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Select a grid square that has an obvious landmark.  Usually a piece of contaimination with a distinctive shape is desirable.  If collecting on Lacey carbon grids, contamination near to an interesting carbon pattern is even better.  Move the stage to that grid square and landmark. &lt;code&gt;(Right click) Move stage here&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Check the grid square.  &lt;code&gt;Preparation &gt;&gt; Grid Square &gt;&gt; Preview&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Determine the eucentric height  &lt;code&gt;Auto Functions &gt;&gt; Hole/Eucentric Height &gt;&gt; Auto-eucentric by beam tilt.&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Set the microscope parameters to match the Data Acqusition settings. &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; Set&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Move to the microscope computer.  Insert the screen.  Use the control panel joystick to make fine manipulations onto the landmark.  Retract the screen when finished.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-3---perform-image-shift-calibration&#34;&gt;Part 3 - Perform Image Shift Calibration&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Select &lt;code&gt;Preparation &gt;&gt; Tasks &gt;&gt; Calibrate Image Shifts&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;The Image Shift Calibration module will walk through the calibration.  To continue, click &lt;code&gt;Proceed&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;When a new setting is applied and an image is generated, adjust the calibration center by double-clicking on the corresponding spot on the right image panel.  It is advisable to re-acquire this image before moving on.  When satisfied, click &lt;code&gt;Proceeed&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;step-2---generate-the-atlas&#34;&gt;Step 2 - Generate the Atlas&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Select &lt;code&gt;Atlas &gt;&gt; Session Setup&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Enter a path for the data (the folder will be created automatically).  Images should be saved as &lt;code&gt;MRC&lt;/code&gt; format.&lt;/li&gt;
+	&lt;li&gt;Begin the atlas acquisition.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;step-3---set-up-the-epu-session&#34;&gt;Step 3 - Set up the EPU Session&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Select &lt;code&gt;EPU &gt;&gt; Session Setup&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Enter the setup parameters.  Enter a path for the data (the folder will be created automatically).  Images should be saved as &lt;code&gt;Unnormalized Packed&lt;/code&gt; and &lt;code&gt;MRC&lt;/code&gt; format.  Make sure that the acqusition type is Manual.  Make sure to select the correct grid type and indicate the hole paramters (if applicable).&lt;/li&gt;
+	&lt;li&gt;Still in the EPU window, use the &lt;code&gt;Atlas&lt;/code&gt; tab to select a grid square.&lt;/li&gt;
+	&lt;li&gt;Determine the eucentric height.  Select &lt;code&gt;Preparation &gt;&gt; Hole/Eucentric Height &gt;&gt; Auto Eucentric Height by beam tilt&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;It can be useful to take an image of an empty hole in the grid for subsequent determination of approximate ice thickness.  This can be done by centering on the empty hole, then selecting &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; Acquire&lt;/code&gt;.  Note the dose (lower right window).&lt;/li&gt;
+	&lt;li&gt;Check the grid square quality.  Move to a hole that could be potenially useful for collection.  Then collect an image &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; Acquire&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;If the ice thickness is appropriate (usually ~80% of the empty hole dose is desireable), this square can be used for data collection.  &lt;code&gt;EPU &gt;&gt; Atlas &gt;&gt; (Right Click on Grid Square) Add Square&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Generate the pattern of images to be collected.  &lt;code&gt;EPU &gt;&gt; Hole Selection &gt;&gt; Generate Pattern&lt;/code&gt;.  Use the brush too to manually remove i) empty holes/regions, ii) significant contamination, iii) thick ice near the edges of each grid square.  Some of this can be automated using the controls in the top and right panels.&lt;/li&gt;
+	&lt;li&gt;Add the collection and focus parameters.  Defocus values that are typically used begin around -3.2 microns and continue to -1.4 microns.  To add these, enter the desired defocus value and click on the 📄 icon next to the entry field.  It should now be present in the defocus values list above.  Valeus can be removed by selecting them and clicking on the 🗑️ icon.  Be sure to double check these and ensure that the values are negative!&lt;/li&gt;
+	&lt;li&gt;Set the following parameters for Lacey carbon grids:
+		&lt;ul&gt;
+			&lt;li&gt;Spacing = 1 um&lt;/li&gt;
+			&lt;li&gt;Autofocus Recurrance = 5 um&lt;/li&gt;
+			&lt;li&gt;Delay after Stage Shift = 11 seconds&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Alternatively, set the following parameters for Quantifoil grids:
+		&lt;ul&gt;
+			&lt;li&gt;Maximum Image Shift = 9 um&lt;/li&gt;
+			&lt;li&gt;Delay after Image Shift = 1.5 seconds&lt;/li&gt;
+			&lt;li&gt;Delay after Stage Shift = 2 seconds&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;		
+	&lt;li&gt;If collecting from Quantifoil grids, beam shift collection can dramatically speed up acquisiton.  Use the &lt;code&gt;EPU &gt;&gt; Generate Template&lt;/code&gt; to set this up.  Be sure to include one shot for Autofocus.  If you are unsure how to make an appropriate template, ask the Facility Manager.&lt;/li&gt;
+	&lt;li&gt;Return to the &lt;code&gt;EPU &gt;&gt; Atlas&lt;/code&gt; view.  The grid square should now display the eucentric height determined earlier and the number of images to be collected should be indicated in the right-most panel.&lt;/li&gt;
+	&lt;li&gt;Repeat this process beginning at item 3.  It is not necessary to re-enter the collection  (item 9) as these should be preserved from earlier.  Continue adding more grid squares until there are enough for the desired collection time.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;step-4---perform-direct-alignments&#34;&gt;Step 4 - Perform Direct Alignments&lt;/h2&gt;
+&lt;h3 id=&#34;part-1---grid-square-selection-1&#34;&gt;Part 1 - Grid Square Selection&lt;/h3&gt;
+&lt;div style=&#39;background:lemonchiffon; color:goldenrod&#39;&gt;Note:  As with the Image Shift Calibration, this square will take a fair amount of radiation damage, so it is important that it is not a square that you plan to use for data acqusition.  A square that has a few empty holes and some interestingly-shaped contamination is ideal.&lt;/div&gt;
+&lt;ol&gt;
+	&lt;li&gt;Use EPU to navigate to a new grid square.  Move to an empty hole for best contrast.&lt;/li&gt;
+	&lt;li&gt;Determine the eucentric height. &lt;code&gt;Auto functions &gt;&gt; Hole Eucentric &gt;&gt; Eucentric Height by Beam Tilt&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Position the beam on the edge of an empty hole.  This can be done using the EPU controls or by using the joystick on the control panel if the screen is inserted.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-2---initial-focus-determination&#34;&gt;Part 2 - Initial Focus Determination&lt;/h3&gt;
+&lt;p&gt;Overview:  This part of the protocol will serve to tune the eucentric height and find focus.  It will be refined in Part 5.&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Insert the screen&lt;/li&gt;
+	&lt;li&gt;Set the eucentric height manually
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Set the microscope optics to the Data Acquisition setting. &lt;code&gt;Preparation &gt;&gt; Data Acquisition &gt;&gt; SET&lt;/code&gt;&lt;/li&gt;
+			&lt;li&gt;Use the control panel joystick to move to an area where you can see the edge of the hole and some carbon.&lt;/li&gt;
+			&lt;li&gt;Set the alpha angle to +/- 20 degrees.  The stage should rotate.  The goal is to adjust the Z-height of the stage such that changing alpha +/- 20 degrees keeps the center of the image in place.  Z-height can be adjusted using the control panel (rightmost buttons).&lt;/li&gt;
+			&lt;li&gt;When adjusting the height, it is likely necessary to toggle between alpha=0 and alpha=20.&lt;/li&gt;
+			&lt;li&gt;When satisfied with the Z-height adjustment, make sure to set alpha back to 0 degrees.&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Use the control panel joystick to move the beam over some carbon.&lt;/li&gt;
+	&lt;li&gt;Find focus using the Gatan computer
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;Retract the screen&lt;/li&gt;
+			&lt;li&gt;Activate the Gatan camera. &lt;code&gt;View&lt;/code&gt;&lt;/li&gt;
+			&lt;li&gt;Using the FFT window, find focus.  Use the defocus knob on the control panel and adjust until no Thon rings are apparent.&lt;/li&gt;
+			&lt;li&gt;Reset the defocus to 0 using the control panel.&lt;/li&gt;
+			&lt;li&gt;Deactivate the Gatan camera. &lt;code&gt;Stop View&lt;/code&gt;&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-3---initialize-direct-alignments&#34;&gt;Part 3 - Initialize Direct Alignments&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Insert the screen.&lt;/li&gt;
+	&lt;li&gt;Activate the direct aligments menu (bottom right).&lt;/li&gt;
+	&lt;li&gt;Sequentially adjust the alignments:
+		&lt;ol type=&#34;a&#34;&gt;
+			&lt;li&gt;nP beam tilt ppX (use multifunction X to minimize movement)&lt;/li&gt;
+			&lt;li&gt;nP beam tilt ppY (use multifunction X to minimize movement)&lt;/li&gt;
+			&lt;li&gt;beamshift center (use both knobs; center on the green circle)&lt;/li&gt;
+			&lt;li&gt;rotation center (minimize movement; use both knobs)&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Click &lt;code&gt;Done&lt;/code&gt; when finished.&lt;/li&gt;
+	&lt;li&gt;Retract the screen.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-4---initial-astigmatism-correction-and-coma-free-alignment&#34;&gt;Part 4 - Initial Astigmatism Correction and Coma-Free Alignment&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Open the Sherpa window.  If Sherpa is not already running, it can be launched from &lt;code&gt;Microscope Software Launcher &gt;&gt; Tools &gt;&gt; Sherpa&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Use the control panel to dial in approximately -1.1 um defocus (note: this may vary depending on the magnification being used)&lt;/li&gt;
+	&lt;li&gt;Check and/or set the following parameters:&lt;/li&gt;
+		&lt;ul&gt;Type: EF-CCD&lt;/ul&gt;
+		&lt;ul&gt;Exposure time [s]: 3.0&lt;/ul&gt;
+		&lt;ul&gt;Binning: 2&lt;/ul&gt;
+		&lt;ul&gt;Readout area: Full&lt;/ul&gt;
+		&lt;ul&gt;Electron counting: checked&lt;/ul&gt;
+		&lt;ul&gt;Autofocus to [um]: -1.0, checked&lt;/ul&gt;
+	&lt;li&gt;Measure the objective stigmation. &lt;code&gt;Measure&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Correct the objective stigmation. &lt;code&gt;Correct&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-5---focus-determination&#34;&gt;Part 5 - Focus Determination&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Activate the Gatan camera. &lt;code&gt;View&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Determine the correction from Sherpa (the defocus used is in the Sherpa window; the set defocus is listed in the current optics parameters on the microscope computer)&lt;/li&gt;
+	&lt;li&gt;Adjust the current defocus by the amount calculated above.  This should get you very close to focus.&lt;/li&gt;
+	&lt;li&gt;Check for focus using the FFT window. It should be quite good.  Make fine adjustments if needed using the defocus knob on control panel.&lt;/li&gt;
+	&lt;li&gt;Reset the defocus to 0 using the control panel&lt;/li&gt;
+	&lt;li&gt;Deactivate the Gatan camera. &lt;code&gt;Stop View&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;part-6---final-astigmatism-correction-and-comafree-alignment&#34;&gt;Part 6 - Final Astigmatism Correction and ComaFree Alignment&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Open the Sherpa window&lt;/li&gt;
+	&lt;li&gt;Use the control panel to dial in approximately -1.1 um defocus (note: this may vary depending on the magnification being used)&lt;/li&gt;
+	&lt;li&gt;Measure the objective stigmation. &lt;code&gt;Measure&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Correct the objective stigmation. &lt;code&gt;Correct&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Correct the coma. &lt;code&gt;Correct&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Measure the objective stigmation. &lt;code&gt;Measure&lt;/code&gt;.  Correct if needed.&lt;/li&gt;
+	&lt;li&gt;Cycle between the objective stigmation and coma-free alignment until both are accurate and the errors are small.&lt;/li&gt;
+	&lt;li&gt;The last step should be measurement of the objective stigmation with the astigmatism measuring 1 nm or less.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;div-stylebackgroundpink-colordarkredpart-vii---import-settings-to-epu---criticaldiv&#34;&gt;&lt;div style=&#39;background:pink; color:darkred&#39;&gt;Part VII - Import Settings to EPU - CRITICAL!&lt;/div&gt;&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Set the Data Acquisition optics parameters. &lt;code&gt;EPU &gt;&gt; Preparation &gt;&gt; Data Acquisition &gt;&gt; GET&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;Set the Autofocus optics parameters. &lt;code&gt;EPU &gt;&gt; Preparation &gt;&gt; Autofocus &gt;&gt; GET&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;step-5---final-touches-and-start&#34;&gt;Step 5 - Final Touches and Start&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Center the ZLP. &lt;code&gt;Gatan Window &gt;&gt; Center ZLP&lt;/code&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;B&gt;CRITICAL:&lt;/B&gt;  Double check that the stage rotation (alpha) is set to zero and that the Turbo pump is OFF.&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;Start the automated acquisition &lt;code&gt;EPU &gt;&gt; Automated Acquistion &gt;&gt; Start Run!&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cryo-EM Sample Preparation</title>
+      <link>https://jonipsaro.github.io/post/krios/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/post/krios/</guid>
+      <description>&lt;h2 id=&#34;part-i---sample-freezing-with-the-leica-apparatus&#34;&gt;Part I - Sample freezing with the Leica apparatus&lt;/h2&gt;
+&lt;h3 id=&#34;assemble-the-necessary-tools&#34;&gt;Assemble the necessary tools&lt;/h3&gt;
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;ul&gt;
+	&lt;li&gt;Leica-compatible forceps - These are standard grip, have a black locking clip, and a distal adapter for mounting on the Leica&lt;/li&gt;
+	&lt;li&gt;Cryogen container for liquid ethane - This is typically stored in the Leica itself, but may be removed to evaporate residual ethane&lt;/li&gt;
+	&lt;li&gt;Large forceps&lt;/li&gt;
+	&lt;li&gt;Small forceps&lt;/li&gt;
+	&lt;li&gt;Grid boxes (color-coded) - Make sure these are empty before beginning!&lt;/li&gt;
+	&lt;li&gt;Grids - As many as you intend to freeze, plus a couple extra in case of mishaps&lt;/li&gt;
+	&lt;li&gt;Sample - At working concentration, spun/filtered to remove aggregates&lt;/li&gt;
+	&lt;li&gt;Small transfer dewar for the Vitrobot &amp; Leica&lt;/li&gt;
+	&lt;li&gt;A single liquid nitrogen transfer dewar filled with nitrogen&lt;/li&gt;
+&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h3 id=&#34;prepare-the-leica-apparatus&#34;&gt;Prepare the Leica apparatus&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Using a 60 mL syringe connected to the luer lock valve on the right of the instrument, fill the humidifier chamber with 90 mL of deionized water.&lt;/li&gt;
+	&lt;li&gt;Place the following components in the indicated locations within the plunging chamber:
+		&lt;ul&gt;
+			&lt;li&gt;Cryogen holder for liquid ethane - 12 o&#39;clock&lt;/li&gt;
+			&lt;li&gt;Grid box reservoir - 4 o&#39;clock - Make sure this is seated properly in place.&lt;/li&gt;
+			&lt;li&gt;First grid box - in grid box reservior; make sure this is properly seated.&lt;/li&gt;
+			&lt;li&gt;Additional grid boxes - 6-9 o&#39;clock&lt;/li&gt;
+			&lt;li&gt;Cryogen holder lid (with tubing connected to the liquid ethane tank below the Leica) - 10 o&#39;clock&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Make sure that the grid box screws are loosened and that the grid box holder cover is oriented to allow access to the first slot.&lt;/li&gt;
+	&lt;li&gt;Fill the nitrogen reservoir (the main part of the chamber).  Nitrogen will seep down through the grating into a larger reservoir.  The reservoir fill and temperature can be monitored on the Leica display.  The goal is to begin with the reservoir full (100%) at a temperature of -180&amp;deg;C.&lt;/li&gt;
+	&lt;li&gt;Allow the reservoir to equilibrate.  If comforatable, this a good time to glow discharge grids.&lt;/li&gt;
+	&lt;li&gt;Top off the reservoir such that the nitrogen level is just at the level of the grating.&lt;/li&gt;
+	&lt;li&gt;Fill the grid box reservoir with nitrogen.&lt;/li&gt;
+	&lt;li&gt;Fill the cryogen reservoir with ethane.
+		&lt;ol type=&#34;i&#34;&gt;
+			&lt;li&gt;Move the cryogen holder lid to cover the cryogen holder&lt;/li&gt;
+			&lt;li&gt;Make sure to wear eye protection.&lt;/li&gt;
+			&lt;li&gt;Gently open the outlet valve on the liquid ethane tank.&lt;br&gt;
+			&lt;i&gt;Note: The main tank valve should already be open and the regulator should be already properly adjusted.  In most cases, simply open the black outlet valve.&lt;/i&gt;&lt;/li&gt;
+			&lt;li&gt;When the cryogen holder is full, close the outlet valve and carefully remove the cryogen holder cover.&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;The Leica apparatus is now ready for use.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;glow-discharge-grids&#34;&gt;Glow discharge grids&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Check the status of the glow discharge device oil supply.  If more than 1-2 months old, ask for help changing it.&lt;/li&gt;
+	&lt;li&gt;Carefully place grids on a clean glass coverslip, carbon side up.&lt;/li&gt;
+	&lt;li&gt;Turn on the glow discharge apparatus.&lt;/li&gt;
+	&lt;li&gt;Remove the bell jar cover from the apparatus.&lt;/li&gt;
+	&lt;li&gt;Carefully insert the coverslip with grids onto the discharge platform.&lt;/li&gt;
+	&lt;li&gt;Replace the bell jar cover.&lt;/li&gt;
+	&lt;li&gt;Activate the glow discharge chamber.&lt;/li&gt;
+	&lt;li&gt;When the glow discharge protocol has completed, remove the bell jar cover.&lt;/li&gt;
+	&lt;li&gt;Carefully remove the coverslip with grids to the desired work surface.&lt;/li&gt;
+	&lt;li&gt;Replace the bell jar cover for long-term storage.&lt;/li&gt;
+	&lt;li&gt;Turn off the glow discharge device.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;load-grids-onto-the-leica-forceps&#34;&gt;Load grids onto the Leica forceps&lt;/h3&gt;
+&lt;ul&gt;
+	&lt;li&gt;Four sets of forceps are ideal as this will let you load an entire grid box at once.&lt;/li&gt;
+	&lt;li&gt;For left-handed loading (our current setup), load grids carbon side up onto the Leica forceps.&lt;/li&gt;
+	&lt;li&gt;For right-handed loading, load grids carbon side down.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;apply-samples-and-plunge-freeze&#34;&gt;Apply samples and plunge freeze&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;If this is the first sample or the blotting paper is spent, install a fresh piece of blotting paper.  It is held in place by a thin, magnetic ring.&lt;/li&gt;
+	&lt;li&gt;Install one set of the grid-loaded Leica forceps on the loading piston.&lt;/li&gt;
+	&lt;li&gt;Initialize the loading protocol either with the touch screen or foot pedal.  The humidified chamber should lower into place.&lt;/li&gt;
+	&lt;li&gt;Using the side-entry port, apply 4 uL of sample to the grid with a pipet.&lt;/li&gt;
+	&lt;li&gt;Advance the protocol with the foot pedal.  The pre-blotting countdown will begin, after which the blotting and plunging will automatically proceed.&lt;/li&gt;
+	&lt;li&gt;After plunging, the chamber should raise.  Advance the protocol once more with the foot pedal.  The piston should raise slightly, but the grid should remain submerged in the cryogen.&lt;/li&gt;
+	&lt;li&gt;Carefully, while maintaining the grid in the liquid ethane, disconnect the forceps from the piston.&lt;/li&gt;
+	&lt;li&gt;Tightly grip the forceps, and release the black clip.&lt;br&gt;
+		&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;Pro tip: It is &lt;u&gt;much&lt;/u&gt; easier to slide the black clip up of the forceps are gripped from above.  However, be careful not to release the forceps or the grid will be dropped!&lt;/b&gt;  I prefer to do the following:
+		&lt;br&gt;&lt;br&gt;
+			&lt;ol type=&#34;i&#34;&gt;
+				&lt;li&gt;Grip the forceps tightly, slightly above the black clip.&lt;/li&gt;
+				&lt;li&gt;While still maintaining pressure, move the black clip upward slightly, just until it is no longer clipped.&lt;/li&gt;
+				&lt;li&gt;While still maintaining pressure, use your other hand to grip the forceps tightly slightly below the black clip.&lt;/li&gt;
+				&lt;li&gt;With the first hand, slide the black clip to the top of the forceps.&lt;/li&gt;
+				&lt;li&gt;The forceps are now ready for transferring the grid to the grid box.&lt;/li&gt;
+			&lt;/ol&gt;
+		&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+	&lt;/li&gt;
+	&lt;li&gt;In one deft motion, move the grid from the cryogen holder to the nitrogen in the grid box reservoir.&lt;/li&gt;
+	&lt;li&gt;Transfer the grid to the grid box.&lt;/li&gt;
+	&lt;li&gt;Advance the grid box cover one slot, such that a space is accessible for the next grid.&lt;/li&gt;
+	&lt;li&gt;Continue applying samples, plunging, and transferring until the grid box is full.&lt;/li&gt;
+	&lt;li&gt;Rotate the grid box cover such that all slots are fully covered.&lt;/li&gt;
+	&lt;li&gt;Tighten the grid box cover with a screw driver.&lt;/li&gt;
+	&lt;li&gt;With forceps, transfer the grid box to the small Leica/Vitrobot transport dewar.&lt;/li&gt;
+	&lt;li&gt;If freezing additional boxes of grids add additional liquid nitrogen to the grid box reservoir. It is easier if this is done while covering the ethane/cryogen reservoir with its lid, just be sure to remove the lid before continuing.&lt;/li&gt;
+	&lt;li&gt;Continue as above for all samples. When finished, store the grid boxes in a long-term liquid nitrogen storage dewar.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;clean-up&#34;&gt;Clean up&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Once all samples have been stored, clean up the area and move all tools to the drying oven.&lt;/li&gt;
+	&lt;li&gt;Carefully drain the humidifier by opening the valve on the filling tubing.  Allow the humidifier to empty completely.  You may speed this up with the syringe if desired.&lt;/li&gt;
+	&lt;li&gt;Open the humidifier chamber door.&lt;/li&gt;
+	&lt;li&gt;Remove and discard the spent blotting paper.&lt;/li&gt;
+	&lt;li&gt;Very carefully, remove the the cryogen container.  Place it in a safe area for evaporation of the liquid ethane.&lt;/li&gt;
+	&lt;li&gt;Begin the bake-out protocol.  Ensure that the humidifier chamber door is open during this time.  The bake-out timer will begin counting down once the nitrogen reservoir level has reached zero.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;part-ii---grid-clipping&#34;&gt;Part II - Grid Clipping&lt;/h2&gt;
+&lt;h3 id=&#34;fill-two-liquid-nitrogen-transfer-dewars--make-sure-these-are-dry-before-beginning&#34;&gt;Fill two liquid nitrogen transfer dewars.  Make sure these are dry before beginning.&lt;/h3&gt;
+&lt;h3 id=&#34;assemble-the-necessary-tools-1&#34;&gt;Assemble the necessary tools&lt;/h3&gt;
+&lt;table&gt;&lt;tr&gt;&lt;td&gt;
+&lt;ul&gt;
+	&lt;img src=&#34;clip1.jpg&#34; alt=&#34;Tools for grid clipping&#34; style=&#34;width:50%; float:right&#34;&gt;
+	&lt;li&gt;Large forceps&lt;/li&gt;
+	&lt;li&gt;Flat-T autoloader forceps&lt;/li&gt;
+	&lt;li&gt;C-clip holder wands (one per grid)&lt;/li&gt;
+	&lt;li&gt;Rings and C-clips (one per grid; not pictured)&lt;/li&gt;
+	&lt;li&gt;Screwdriver&lt;/li&gt;
+	&lt;li&gt;Table-top cryo dewar (and cover) for grid clipping&lt;/li&gt;
+	&lt;li&gt;Aluminum &amp; brass specimen transfer pedestal (not pictured)&lt;/li&gt;
+	&lt;li&gt;Cryo-EM grid box(es) (not pictured)&lt;/li&gt;
+	&lt;li&gt;Cryo-EM grid box top fastener wand(s)&lt;/li&gt;
+	&lt;li&gt;Funnel (not pictured)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;h3 id=&#34;load-c-clips-into-the-holder-wands&#34;&gt;Load C-clips into the holder wands.&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Use forceps and firm pressure to insert a single C-clip into the wand.&lt;/li&gt;
+	&lt;li&gt;Make sure that the C-clip is hugging the inside wall of the wand.  Use forceps to adjust if necessary.&lt;/li&gt;
+	&lt;li&gt;Hold the wand vertically and position it on a flat surface such that the tip of the wand is held firmly against the surface.&lt;/li&gt;
+	&lt;li&gt;Press down on the wand trigger to engage and align the C-clip at the tip of the wand.&lt;/li&gt;
+	&lt;li&gt;Inspect proper placement of the C-clip&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;prepare-the-transfer-station-img-srcclip2jpg-alttransfer-station-setup-stylewidth50-floatright&#34;&gt;Prepare the transfer station &lt;img src=&#34;clip2.jpg&#34; alt=&#34;Transfer station setup&#34; style=&#34;width:50%; float:right&#34;&gt;&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Arrange the transfer setup as pictured.  It should include the specimen transfer pedestal, loaded C-clip wands, and autoloader forceps.&lt;/li&gt;
+	&lt;li&gt;Additionally, place clip rings (flat-side down) in each of the four mounting positions in the brass portion of the transfer pedestal.&lt;/li&gt;
+	&lt;li&gt;Inspect each clip ring to make sure that the clip side is face-up.&lt;/li&gt;
+	&lt;li&gt;Once clip rings are in place, rotate the brass disc such that all clips are covered.  This will ensure they do not move while cooling the station.&lt;/li&gt;
+	&lt;li&gt;Place cryo-EM grid box(es) on the sample pedestal.  Open them using the grid box fastener wand.  Keep the grid box top attached to the fastner wand until needed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;recover-frozen-samples-from-the-storage-dewar--place-them-in-a-styrofoam-carrier-filled-with-liquid-nitrogen&#34;&gt;Recover frozen samples from the storage dewar.  Place them in a styrofoam carrier filled with liquid nitrogen.&lt;/h3&gt;
+&lt;h3 id=&#34;cool-the-transfer-station&#34;&gt;Cool the transfer station&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Temporarily remove the wands and forceps from the transfer station.  Place them away from the transfer station to ensure they do not cool (and consequently get condensation on them) while cooling the transfer station (next step).&lt;/li&gt;
+	&lt;li&gt;Apply the plastic cover to the transfer station.&lt;/li&gt;
+	&lt;li&gt;Use the large funnel to fill the chamber with liquid nitrogen until the nitrogen level just covers the aluminum portion of the transfer pedestal.
+		&lt;br&gt;&lt;i&gt;Note: Do not cover the brass portion of the pedestal.  If the brass portion does get covered, evaporate the addtional nitrogen by submerging the end of any metal tool into the areas with excess nitrogen.  It should boil off fairly quickly.&lt;/i&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;clip-and-transfer-grids&#34;&gt;Clip and transfer grids&lt;/h3&gt;
+&lt;p&gt;&lt;i&gt;Note:  Replace the wands and forceps in the transfer station and allow them to eqilibrate.  While clipping and transferring, keep all tools below the nitrogen level to avoid ice contamination.&lt;/i&gt;&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Transfer the grid storage box to one well in the specimen transfer pedestal.&lt;/li&gt;
+	&lt;li&gt;Loosen the top of the grid storage box with a screwdriver&lt;/li&gt;
+	&lt;li&gt;Make sure that the brass portion of the sample transfer pedestal is aligned such that a clip is accessible in the grid-loading positon.&lt;/li&gt;
+	&lt;li&gt;With pointed forceps, transfer a single grid to the clip.  Ensure that the grid is centered.&lt;/li&gt;
+	&lt;li&gt;Using the blunt end of a pair of forceps, rotate the brass portion of the transfer pedestal one notch such that the clip and grid are now in the clipping position.&lt;/li&gt;
+	&lt;li&gt;Insert a loaded C-clip holder wand into the same, transfer pedestal hole.  Ensure that the wand is at the bottom of the hole, then install the C-clip by ejecting it by pressing on the back end of the C-clip holder wand.&lt;/li&gt;
+	&lt;li&gt;Return the pedestal to the grid-loading positon.&lt;/li&gt;
+	&lt;li&gt;&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;b&gt;CRITICAL:&lt;/b&gt;  Inspect the grid to ensure that the clipping was successful.&lt;br&gt;An improperly-clipped grid can come loose in the microscope and necessitates disassembly of the scope.  You do not want this to happen!&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;Continue as above until all grids have been transferred.&lt;/li&gt;
+	&lt;li&gt;Fasten the cryo-EM grid box cover using the fastener wand.&lt;/li&gt;
+	&lt;li&gt;Transfer the loaded cryo-EM grid box to filled stryofoam dewar.&lt;/li&gt;
+	&lt;li&gt;If any grids remain in the original grid storage box, ensure that the cover is properly oriented, then fasten it with the screwdriver.  These grids can be taken back to the storage dewar.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ii-autoloader-cartridge-loading&#34;&gt;II. Autoloader Cartridge Loading&lt;/h2&gt;
+&lt;h3 id=&#34;prepare-the-autoloader-cassette-transfer-station-img-srcclip4jpg-altautoloader-transfer-station-stylewidth40-floatright-overflowauto&#34;&gt;Prepare the autoloader cassette transfer station &lt;img src=&#34;clip4.jpg&#34; alt=&#34;Autoloader transfer station&#34; style=&#34;width:40%; float:right; overflow:auto&#34;&gt;&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Assemble the autoloader transfer station as pictured.  Make sure that the exit hatch cover is in place.&lt;/li&gt;
+	&lt;li&gt;Make sure to include the cassette ejector wand and cassette (the cassette should be oriented with &#34;1&#34; toward the front)&lt;/li&gt;
+	&lt;li&gt;Ensure that the cassette is empty and that the orientaiton is correct.  Holder slots should look like the letter &#34;L&#34;.&lt;/li&gt;
+	&lt;li&gt;Make sure the foam and central plastic covers are in place.&lt;/li&gt;
+	&lt;li&gt;Fill the transfer station until the liquid nitrogen level has just covered the cassette.  A bit extra (1/4&#34;) can be added additionally.&lt;/li&gt;
+	&lt;li&gt;Additionally, fill the autoloader transfer canister with liquid nitrogen.  Ensure that the pin at the top of the canister is mobile by gently pulling up on it.  Once the canister&#39;s temperature has equilibrated, cover it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;br&gt;
+&lt;h3 id=&#34;transfer-the-clipped-grids-to-the-autoloader-cassette&#34;&gt;Transfer the clipped grids to the autoloader cassette&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Using the cryo-EM box top fastener wand, transfer each cryo-EM grid box to the autoloader cassette transfer station.&lt;/li&gt;
+	&lt;li&gt;Unscrew the cryo-EM grid box lids and remove them.&lt;/li&gt;
+	&lt;li&gt;&lt;div style=&#39;background:pink; color:darkred&#39;&gt;&lt;b&gt;CRITICAL:&lt;/b&gt;  Do not fully load a cassette!  If there is already a grid on the scope, you will be stuck!  Typically, we will leave the first position empty.&lt;/div&gt;&lt;/li&gt;
+	&lt;li&gt;Using the Flat-T autoloader forceps, transfer each clipped grid to the autoloader cassette.  Each clipped grid should be placed such that is is held in place, just above the bottom of each &#34;L&#34;.  It should look like &lt;code&gt;L---&amp;#8515;&lt;/code&gt; from above.&lt;/li&gt;
+	&lt;li&gt;Continue loading all of the clipped grids into the autoloader cassette.&lt;/li&gt;
+	&lt;li&gt;Once all grids have been loaded, ensure that the autoloader transfer canister (NanoCab) is cool.&lt;/li&gt;
+	&lt;li&gt;Remove the exit hatch cover and install the autoloader transfer canister.&lt;/li&gt;
+	&lt;li&gt;Use the cassette holder to grab the autoloader cassette and quickly move it to the canister via the exit hatch.&lt;/li&gt;
+	&lt;li&gt;Remove the canister from the transfer station.  Ensure that the cassette is properly seated (it should be below the surface of the nitrogen and the pin a the top of the canister should extend.)
+&lt;/ol&gt;
+&lt;h3 id=&#34;load-the-cassette-into-the-microscope&#34;&gt;Load the cassette into the microscope&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Ensure that there is not currently a cassette in the microscope.&lt;/li&gt;
+	&lt;li&gt;Open the front access panel to the Titan Krios.&lt;/li&gt;
+	&lt;li&gt;Install the NanoCab canister, curve side first, in the loading position.  The green light should activate.&lt;/li&gt;
+	&lt;li&gt;Press the green button.&lt;/li&gt;
+	&lt;li&gt;Wait for the cassette to be loaded.  When the protocol completes, the cassette should be visible through the viewing window and the white button should turn off.&lt;/li&gt;
+	&lt;li&gt;Remove the NanoCab canister, discard the remaining nitrogen, and place the canister in the drying oven.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;clean-up-1&#34;&gt;Clean up&lt;/h3&gt;
+&lt;ol&gt;
+	&lt;li&gt;Return to the autoloader cassette transfer station.&lt;/li&gt;
+	&lt;li&gt;Carefully remove all of the components, discard the remaining nitrogen, and place all tools and the transfer station itself in the drying oven.&lt;/li&gt;
+	&lt;li&gt;Inspect the rest of the work area.  Discard any additional trash and return all tools and supplies to their rightful storage locations.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;BR&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cryo-EM Setup for Changing Energy</title>
+      <link>https://jonipsaro.github.io/post/krios_energy/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/post/krios_energy/</guid>
+      <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;There are three main places that energy settings must be imported:&lt;/p&gt;
+&lt;ol&gt;
+	&lt;li&gt;Microscope Energy&lt;/li&gt;
+	&lt;li&gt;Microscope Alignments&lt;/li&gt;
+	&lt;li&gt;FEG Registry&lt;/li&gt;
+	&lt;li&gt;Gatan Settings&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;step-1---microscope-energy&#34;&gt;Step 1 - Microscope Energy&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Close the column valves.&lt;/li&gt;
+	&lt;li&gt;Close any instance of EPU that is running.&lt;/li&gt;
+	&lt;li&gt;Set the energy. &lt;code&gt;Setup Tab &gt;&gt; High Tension &gt;&gt; 200 kV&lt;/code&gt;.  If you expand the High Tension tab, you will see the high tension move to 200 kV and stabilize.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;step-2---load-alignments&#34;&gt;Step 2 - Load Alignments&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Open the &lt;code&gt;Alignments&lt;/code&gt; tab.&lt;/li&gt;
+	&lt;li&gt;Select the appropriate alignments file (e.g. the most recent 200 kV settings).&lt;/li&gt;
+	&lt;li&gt;Available settings will propagate in the &#34;available&#34; window.  Select all of them by clicking on one, then hitting &lt;code&gt;Ctrl+A&lt;/code&gt;.  Click the &lt;code&gt;&lt;&lt;/code&gt; arrow to move the selected parameters to those being used.&lt;/li&gt;
+	&lt;li&gt;Click &lt;code&gt;Apply&lt;/code&gt;.&lt;/li&gt;
+	&lt;li&gt;Wait overnight for the microscope to stabilize before collecting data.  Some preliminary work can be done once the energy has stabilized.&lt;/li&gt;
+	&lt;li&gt;Perform a quick beam center.  Lift the screen.  &lt;code&gt;Direct Alignments &gt;&gt; Beam Shift&lt;/code&gt;, adjust with Multifunction X and Y on the control pad, then click &lt;code&gt;Done&lt;/code&gt; on the Direct Aligments tab.
+&lt;/ol&gt;
+&lt;h2 id=&#34;step-3---feg-registry&#34;&gt;Step 3 - FEG Registry&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Set the FEG Controls.  &lt;code&gt;FEG Control &gt;&gt; Gun Lens&lt;/code&gt;.  Set the gun lens (5 for 200 kV; 4 for 300 kV).  Confirm that the settings have been applied in the scope settings window.&lt;/li&gt;
+	&lt;li&gt;Load the FEG Registry.  &lt;code&gt;FEG Register&lt;/code&gt;.  Select the appropriate registry (e.g. the most recent 200 kV settings). Click &lt;code&gt;Set&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;step-4---setup-gatan-camera&#34;&gt;Step 4 - Setup Gatan Camera&lt;/h2&gt;
+&lt;ol&gt;
+	&lt;li&gt;Activate the Filter Control Menu.
+		&lt;ol type=&#34;i&#34;&gt;
+			&lt;li&gt;&lt;code&gt;Help &gt;&gt; User Mode &gt;&gt; Power User.&lt;/code&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;code&gt;Window &gt;&gt; Filter Control&lt;/code&gt;&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;Save the current settings.  Look for the 💾 icon near the bottom of the Gatan Filter Control window.&lt;/li&gt;
+	&lt;li&gt;Change the energy as appropriate.&lt;/li&gt;
+	&lt;li&gt;Load the settings (📂 icon near the bottom of the Gatan Filter Control Window).&lt;/li&gt;
+	&lt;li&gt;Center the ZLP.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Structure-Activity Relationship on Jonathan Ipsaro</title>
+    <link>https://jonipsaro.github.io/tags/structure-activity-relationship/</link>
+    <description>Recent content in Structure-Activity Relationship on Jonathan Ipsaro</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jonathan Ipsaro {year}</copyright>
+    <lastBuildDate>Thu, 10 Jun 2010 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://jonipsaro.github.io/tags/structure-activity-relationship/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Crystal structure and functional interpretation of the erythrocyte spectrin tetramerization domain complex</title>
+      <link>https://jonipsaro.github.io/publication/ipsaro-crystal-2010/</link>
+      <pubDate>Thu, 10 Jun 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/ipsaro-crystal-2010/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Structural basis for spectrin recognition by ankyrin</title>
+      <link>https://jonipsaro.github.io/publication/ipsaro-structural-2010/</link>
+      <pubDate>Thu, 20 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/ipsaro-structural-2010/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

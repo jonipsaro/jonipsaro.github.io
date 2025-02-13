@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eukaryota on Jonathan Ipsaro</title>
+    <link>https://jonipsaro.github.io/tags/eukaryota/</link>
+    <description>Recent content in Eukaryota on Jonathan Ipsaro</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; Jonathan Ipsaro {year}</copyright>
+    <lastBuildDate>Thu, 22 Jan 2015 00:00:00 +0000</lastBuildDate>
+    
+	    <atom:link href="https://jonipsaro.github.io/tags/eukaryota/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>From guide to target: molecular insights into eukaryotic RNA-interference machinery</title>
+      <link>https://jonipsaro.github.io/publication/ipsaro-guide-2015/</link>
+      <pubDate>Thu, 22 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://jonipsaro.github.io/publication/ipsaro-guide-2015/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
